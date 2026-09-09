@@ -72,203 +72,10 @@ body {
     display: block;
 }
 
-/* Hero Section */
-.main-hero {
-    position: relative;
-    height: 80vh;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.hero-background-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: brightness(0.4);
-    z-index: 1;
-}
-
-.hero-overlay-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.hero-tag {
-    color: #d4af37;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    display: block;
-    margin-bottom: 15px;
-}
-
-.hero-overlay-content h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    line-height: 1.1;
-}
-
-.hero-overlay-content p {
-    font-size: 1rem;
-    color: #cccccc;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-/* Botões */
-.btn-gold {
-    background: #d4af37;
-    color: #000000;
-    border: none;
-    padding: 14px 28px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-gold:hover {
-    background: #ffffff;
-}
-
-.btn-line {
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 14px 28px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-line:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-/* Lookbook */
-.lookbook-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 50px 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.lookbook-card {
-    position: relative;
-    height: 450px;
-    overflow: hidden;
-}
-
-.lookbook-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.6);
-    transition: 0.5s;
-}
-
-.lookbook-card:hover img {
-    transform: scale(1.05);
-    filter: brightness(0.8);
-}
-
-.lookbook-caption {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    right: 30px;
-}
-
-.lookbook-caption h3 {
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-/* Garantias */
-.authenticity-section {
-    padding: 60px 20px;
-    background: #050505;
-    border-top: 1px solid #111;
-    border-bottom: 1px solid #111;
-}
-
-.authenticity-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.auth-box {
-    background: #000000;
-    padding: 30px;
-    border: 1px solid #1a1a1a;
-    border-radius: 4px;
-    text-align: left;
-}
-
-.auth-box .auth-icon {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.auth-box h3 {
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.auth-box p {
-    font-size: 0.9rem;
-    color: #888888;
-    line-height: 1.5;
-}
-
-.statement-banner {
-    padding: 80px 20px;
-    text-align: center;
-    background: #000000;
-}
-
-.statement-banner h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-}
-
-.statement-banner p {
-    color: #666666;
-    letter-spacing: 2px;
-}
-
-/* Catálogo */
+/* Catálogo & Grelha de Produtos */
 .catalog-section {
     padding: 60px 20px;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
 }
@@ -293,61 +100,157 @@ body {
     color: #d4af37;
 }
 
+/* FORMATAÇÃO DAS CAIXAS DOS PRODUTOS */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
     margin-top: 30px;
 }
 
-/* Accordion Suporte */
-.accordion-section {
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    clear: both;
+.product-item {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.accordion-container h3 {
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
+/* FORÇAR A IMAGEM PRINCIPAL A FICAR COM TAMANHO PERFEITO */
+.product-media {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    background: #000000;
+    overflow: hidden;
+}
+
+.product-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    padding: 15px;
+    transition: transform 0.4s ease;
+}
+
+.product-item:hover .product-media img {
+    transform: scale(1.03);
+}
+
+.btn-add-cart {
+    width: 100%;
+    background: #111111;
+    color: #d4af37;
+    border: none;
+    border-top: 1px solid #222222;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add-cart:hover {
+    background: #d4af37;
+    color: #000000;
+}
+
+/* FORMATAÇÃO DAS MINIATURAS */
+.product-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.thumb {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    cursor: pointer;
+    border: 1px solid #222222;
+    padding: 2px;
+    background: #000;
+    transition: 0.3s;
+}
+
+.thumb.active, .thumb:hover {
+    border-color: #d4af37;
+}
+
+.product-details {
+    padding: 20px;
     text-align: center;
 }
 
-.accordion-card {
-    border-bottom: 1px solid #222222;
-    margin-bottom: 10px;
-}
-
-.accordion-btn {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #ffffff;
-    padding: 18px 0;
-    text-align: left;
-    font-size: 0.9rem;
+.product-brand {
+    font-size: 0.75rem;
+    color: #666666;
     font-weight: 700;
     letter-spacing: 2px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 5px;
+    display: block;
 }
 
-.accordion-body {
-    display: none;
-    padding-bottom: 20px;
-    color: #888888;
-    font-size: 0.85rem;
-    line-height: 1.6;
+.product-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #ffffff;
 }
 
-/* Drawers Lateral */
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.stock-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #cccccc;
+    padding: 8px 12px;
+    border: 1px solid #222222;
+    background: #000000;
+}
+
+.stock-badge .stock-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.5);
+}
+
+.tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #d4af37;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 4px 8px;
+    z-index: 2;
+}
+
+/* Drawers & Footer */
 .side-drawer, .cart-drawer {
     position: fixed;
-    top: 0;
-    bottom: 0;
+    top: 0; bottom: 0;
     width: 320px;
     background: #000000;
     z-index: 200;
@@ -355,21 +258,10 @@ body {
     transition: 0.4s ease;
 }
 
-.cart-drawer {
-    right: 0;
-    border-left: 1px solid #222222;
-    transform: translateX(100%);
-}
+.cart-drawer { right: 0; border-left: 1px solid #222222; transform: translateX(100%); }
+.side-drawer { left: 0; border-right: 1px solid #222222; transform: translateX(-100%); }
 
-.side-drawer {
-    left: 0;
-    border-right: 1px solid #222222;
-    transform: translateX(-100%);
-}
-
-.side-drawer.active, .cart-drawer.active {
-    transform: translateX(0) !important;
-}
+.side-drawer.active, .cart-drawer.active { transform: translateX(0) !important; }
 
 .drawer-overlay {
     position: fixed;
@@ -379,113 +271,7 @@ body {
     z-index: 150;
 }
 
-.drawer-overlay.active {
-    display: block;
-}
-
-.drawer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-}
-
-.close-drawer {
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.drawer-nav a {
-    display: block;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 15px 0;
-    border-bottom: 1px solid #111111;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.search-panel {
-    display: none;
-    background: #0a0a0a;
-    padding: 15px;
-    border-bottom: 1px solid #222;
-}
-
-.search-input-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-}
-
-.search-input-wrapper input {
-    width: 100%;
-    padding: 10px;
-    background: #000;
-    border: 1px solid #333;
-    color: #fff;
-}
-
-.modal-overlay {
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 300;
-}
-
-.modal-box {
-    background: #0a0a0a;
-    border: 1px solid #222222;
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.size-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    font-size: 0.85rem;
-}
-
-.size-table th, .size-table td {
-    border: 1px solid #222;
-    padding: 10px;
-    text-align: center;
-}
-
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: #25d366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 90;
-}
-
-.whatsapp-icon {
-    width: 28px;
-    height: 28px;
-}
+.drawer-overlay.active { display: block; }
 
 .main-footer {
     border-top: 1px solid #1a1a1a;
