@@ -8,7 +8,7 @@
     <!-- Meta Tags para Redes Sociais e WhatsApp -->
     <meta property="og:title" content="LUXURY STORE | Exclusive Streetwear">
     <meta property="og:description" content="Curadoria de vestuário urbano e peças exclusivas de luxo. Entrega direta ao domicílio em 7-14 dias.">
-    <meta property="og:image" content="lookbook-sweats.jpg">
+    <meta property="og:image" content="hero-bg.jpg">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <header class="main-header">
         <div class="header-container">
             <div class="header-left">
@@ -88,7 +88,7 @@
     <!-- HOME PAGE -->
     <div id="secao-home" class="page-section active">
         
-        <!-- Hero Section com stock ilimitado -->
+        <!-- Hero Section -->
         <section class="main-hero">
             <img src="hero-bg.jpg" class="hero-background-img" alt="Luxury Store Apparel">
             <div class="hero-overlay-content">
@@ -102,7 +102,7 @@
             </div>
         </section>
 
-        <!-- Lookbook Masculino (3 Categorias) -->
+        <!-- Lookbook Grid -->
         <section class="lookbook-grid">
             <div class="lookbook-card">
                 <img src="lookbook-casacos.jpg" alt="Casacos e Outerwear">
@@ -127,7 +127,7 @@
             </div>
         </section>
 
-        <!-- Secção de Garantia de Autenticidade & Envio -->
+        <!-- Garantias e Envio -->
         <section class="authenticity-section">
             <div class="authenticity-container">
                 <div class="auth-box">
@@ -148,30 +148,6 @@
             </div>
         </section>
 
-        <!-- Prova Social / Reviews de Clientes -->
-        <section class="reviews-section">
-            <div class="reviews-container">
-                <h2>O QUE DIZEM OS NOSSOS CLIENTES</h2>
-                <div class="reviews-grid">
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Sweatshirt incrível! Chegou direto a minha casa no prazo previsto. Qualidade e acabamento nota 10."</p>
-                        <span>— Tiago R. (Lisboa)</span>
-                    </div>
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Atendimento excelente pelo WhatsApp. Acompanhei o código de rastreio até a encomenda chegar a casa."</p>
-                        <span>— Diogo M. (Porto)</span>
-                    </div>
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Já é a 3ª compra que faço na Luxury Store. Tudo 100% autêntico e entregue sem complicações."</p>
-                        <span>— Gonçalo S. (Braga)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Banner de Atitude -->
         <section class="statement-banner">
             <h2>EXCLUSIVE APPAREL ONLY.</h2>
@@ -180,7 +156,7 @@
 
     </div>
 
-    <!-- CATÁLOGO PAGE com stock ilimitado -->
+    <!-- CATÁLOGO PAGE com a Carhartt separada -->
     <div id="secao-catalogo" class="page-section">
         <section class="catalog-section">
             <div class="catalog-header">
@@ -214,23 +190,47 @@
 
             <div class="products-grid" id="product-grid">
                 
-                <!-- Casaco Carhartt (Stock Ilimitado e Opções de Cor) -->
-                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket" data-preco="80" data-tamanhos="S,M,L,XL">
+                <!-- Casaco Carhartt Preto (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket preto black" data-preco="63" data-tamanhos="S,M,L,XL">
                     <div class="product-media">
                         <span class="tag">NEW</span>
-                        <img src="carhartt-preto.jpg" id="img-carhartt" alt="Casaco Carhartt">
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinhoCarhartt()">ADICIONAR AO CARRINHO</button>
+                        <img src="carhartt-preto-1.jpg" id="img-carhartt-preto" alt="Casaco Carhartt Preto">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Preto (Tam: M)', 63)">ADICIONAR AO CARRINHO</button>
                     </div>
                     
                     <div class="product-thumbnails">
-                        <img src="carhartt-preto.jpg" class="thumb active" onclick="trocarFoto('img-carhartt', this.src, this); setCarharttColor('preto')">
-                        <img src="carhartt-cinzento.jpg" class="thumb" onclick="trocarFoto('img-carhartt', this.src, this); setCarharttColor('cinzento')">
+                        <img src="carhartt-preto-1.jpg" class="thumb active" onclick="trocarFoto('img-carhartt-preto', this.src, this)">
+                        <img src="carhartt-preto-2.jpg" class="thumb" onclick="trocarFoto('img-carhartt-preto', this.src, this)">
                     </div>
 
-                    <div class="product-details" id="carhartt-item">
+                    <div class="product-details" id="carhartt-preto-item">
                         <span class="product-brand">CARHARTT WIP</span>
-                        <h3 class="product-name">Detroit Jacket - Organic Cotton</h3>
-                        <p class="product-price">80,00 €</p>
+                        <h3 class="product-name">Detroit Jacket - Black</h3>
+                        <p class="product-price">63,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Casaco Carhartt Cinzento (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket cinzento grey" data-preco="63" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW</span>
+                        <img src="carhartt-cinzento-1.jpg" id="img-carhartt-cinzento" alt="Casaco Carhartt Cinzento">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Cinzento (Tam: M)', 63)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="carhartt-cinzento-1.jpg" class="thumb active" onclick="trocarFoto('img-carhartt-cinzento', this.src, this)">
+                        <img src="carhartt-cinzento-2.jpg" class="thumb" onclick="trocarFoto('img-carhartt-cinzento', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="carhartt-cinzento-item">
+                        <span class="product-brand">CARHARTT WIP</span>
+                        <h3 class="product-name">Detroit Jacket - Grey</h3>
+                        <p class="product-price">63,00 €</p>
                         
                         <div class="stock-badge in-stock">
                             <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
@@ -313,33 +313,13 @@
             <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px;">Medidas aproximadas de corte regular / streetwear para a nossa coleção.</p>
             <table class="size-table">
                 <thead>
-                    <tr>
-                        <th>Tamanho</th>
-                        <th>Cintura / Peito</th>
-                        <th>Comprimento</th>
-                    </tr>
+                    <tr><th>Tamanho</th><th>Cintura / Peito</th><th>Comprimento</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>S</strong></td>
-                        <td>38 - 54 cm</td>
-                        <td>68 - 98 cm</td>
-                    </tr>
-                    <tr>
-                        <td><strong>M</strong></td>
-                        <td>40 - 57 cm</td>
-                        <td>71 - 101 cm</td>
-                    </tr>
-                    <tr>
-                        <td><strong>L</strong></td>
-                        <td>42 - 60 cm</td>
-                        <td>74 - 104 cm</td>
-                    </tr>
-                    <tr>
-                        <td><strong>XL</strong></td>
-                        <td>44 - 63 cm</td>
-                        <td>77 - 107 cm</td>
-                    </tr>
+                    <tr><td><strong>S</strong></td><td>38 - 54 cm</td><td>68 - 98 cm</td></tr>
+                    <tr><td><strong>M</strong></td><td>40 - 57 cm</td><td>71 - 101 cm</td></tr>
+                    <tr><td><strong>L</strong></td><td>42 - 60 cm</td><td>74 - 104 cm</td></tr>
+                    <tr><td><strong>XL</strong></td><td>44 - 63 cm</td><td>77 - 107 cm</td></tr>
                 </tbody>
             </table>
             <button type="button" class="btn-gold full-width" onclick="fecharGuiaTamanhos()" style="margin-top:20px;">ENTENDIDO</button>
@@ -389,11 +369,9 @@
             <h3>TEU CARRINHO</h3>
             <span class="close-drawer" onclick="toggleCart()">&times;</span>
         </div>
-
         <div id="cart-items" class="cart-body">
             <p class="empty-msg">O teu carrinho está vazio.</p>
         </div>
-
         <div class="cart-footer">
             <div class="cart-subtotal">
                 <span>TOTAL:</span>
@@ -411,7 +389,7 @@
         </svg>
     </a>
 
-    <!-- Rodapé Profissional & Legal -->
+    <!-- Rodapé Professional & Legal -->
     <footer class="main-footer">
         <div class="footer-grid">
             <div class="footer-col">
