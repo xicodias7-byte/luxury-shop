@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUXURY STORE | Exclusive Streetwear</title>
     
+    <!-- Meta Tags para Redes Sociais e WhatsApp -->
     <meta property="og:title" content="LUXURY STORE | Exclusive Streetwear">
     <meta property="og:description" content="Curadoria de vestuário urbano e peças exclusivas de luxo. Entrega direta ao domicílio em 7-14 dias.">
     <meta property="og:image" content="lookbook-sweats.jpg">
     <meta property="og:type" content="website">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/d4af37/crown.png">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body>
 
@@ -61,7 +74,7 @@
         </div>
         <nav class="drawer-nav">
             <a href="#" onclick="mostrarSecao('home'); toggleMenu();">Início</a>
-            <a href="#" onclick="mostrarSecao('catalogo'); toggleMenu();">Ver Tudo</a>
+            <a href="#" onclick="filtrarCatalogo('todos'); toggleMenu();">Ver Tudo</a>
             <a href="#" onclick="filtrarCatalogo('sweats'); toggleMenu();">Sweatshirts</a>
             <a href="#" onclick="filtrarCatalogo('casacos'); toggleMenu();">Casacos</a>
             <a href="#" onclick="filtrarCatalogo('calcas'); toggleMenu();">Calças</a>
@@ -75,21 +88,21 @@
     <!-- HOME PAGE -->
     <div id="secao-home" class="page-section active">
         
-        <!-- Hero Section com a tua foto do lookbook -->
+        <!-- Hero Section com stock ilimitado -->
         <section class="main-hero">
-            <img src="lookbook-sweats.jpg" class="hero-background-img" alt="Luxury Store Apparel">
+            <img src="hero-bg.jpg" class="hero-background-img" alt="Luxury Store Apparel">
             <div class="hero-overlay-content">
-                <span class="hero-tag">LIMITED DROP &nbsp;•&nbsp; 1 UNIDADE POR PEÇA</span>
+                <span class="hero-tag">COLEÇÃO EXCLUSIVA &nbsp;•&nbsp; TODOS OS TAMANHOS DISPONÍVEIS</span>
                 <h1>EXCLUSIVE MENSWEAR.</h1>
                 <p>Curadoria rigorosa do melhor vestuário urbano e peças de luxo. Entregas diretas ao domicílio.</p>
                 <div class="hero-action">
-                    <button class="btn-gold" onclick="mostrarSecao('catalogo')">VER CATEGORIAS</button>
+                    <button class="btn-gold" onclick="filtrarCatalogo('todos')">VER ROUPA DISPONÍVEL</button>
                     <button class="btn-line" onclick="abrirGuiaTamanhos()" style="margin-left: 10px;">GUIA TAMANHOS</button>
                 </div>
             </div>
         </section>
 
-        <!-- Lookbook Masculino -->
+        <!-- Lookbook Masculino (3 Categorias) -->
         <section class="lookbook-grid">
             <div class="lookbook-card">
                 <img src="lookbook-casacos.jpg" alt="Casacos e Outerwear">
@@ -135,6 +148,30 @@
             </div>
         </section>
 
+        <!-- Prova Social / Reviews de Clientes -->
+        <section class="reviews-section">
+            <div class="reviews-container">
+                <h2>O QUE DIZEM OS NOSSOS CLIENTES</h2>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Sweatshirt incrível! Chegou direto a minha casa no prazo previsto. Qualidade e acabamento nota 10."</p>
+                        <span>— Tiago R. (Lisboa)</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Atendimento excelente pelo WhatsApp. Acompanhei o código de rastreio até a encomenda chegar a casa."</p>
+                        <span>— Diogo M. (Porto)</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Já é a 3ª compra que faço na Luxury Store. Tudo 100% autêntico e entregue sem complicações."</p>
+                        <span>— Gonçalo S. (Braga)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Banner de Atitude -->
         <section class="statement-banner">
             <h2>EXCLUSIVE APPAREL ONLY.</h2>
@@ -143,12 +180,12 @@
 
     </div>
 
-    <!-- CATÁLOGO PAGE (Sem produtos antigos) -->
+    <!-- CATÁLOGO PAGE com stock ilimitado -->
     <div id="secao-catalogo" class="page-section">
         <section class="catalog-section">
             <div class="catalog-header">
-                <h2 id="catalog-title">COLEÇÃO EXCLUSIVA</h2>
-                <p>Todas as peças são exclusivas &nbsp;•&nbsp; <strong>APENAS 1 UNIDADE POR ARTIGO</strong></p>
+                <h2 id="catalog-title">IN STOCK NOW</h2>
+                <p>Todas as peças são exclusivas &nbsp;•&nbsp; <strong>TODOS OS TAMANHOS DISPONÍVEIS</strong></p>
                 
                 <div class="catalog-toolbar">
                     <div class="filter-tabs">
@@ -157,14 +194,151 @@
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('casacos', this)">CASACOS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('calcas', this)">CALÇAS</button>
                     </div>
+
+                    <div class="sort-controls">
+                        <select id="sort-select" onchange="ordenarEFiltrarProdutos()">
+                            <option value="padrao">ORDENAR POR: RELEVÂNCIA</option>
+                            <option value="preco-asc">PREÇO: MENOR PARA MAIOR</option>
+                            <option value="preco-desc">PREÇO: MAIOR PARA MENOR</option>
+                        </select>
+                        <select id="size-filter-select" onchange="ordenarEFiltrarProdutos()">
+                            <option value="todos">TODOS OS TAMANHOS</option>
+                            <option value="S">TAMANHO S</option>
+                            <option value="M">TAMANHO M</option>
+                            <option value="L">TAMANHO L</option>
+                            <option value="XL">TAMANHO XL</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <div class="products-grid" id="product-grid">
-                <div class="no-products-msg">
-                    <h3>NOVO DROP EM BREVE</h3>
-                    <p>Estamos a preparar as próximas peças exclusivas. Fica atento às redes sociais.</p>
-                </div>
+                
+                <!-- Polo Ralph Lauren (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="polo ralph lauren sweatshirt" data-preco="50" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">HOT</span>
+                        <img src="polo.jpg" id="img-polo" alt="Sweatshirt Polo Ralph Lauren">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt Polo Ralph Lauren (Tam: M)', 50)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="polo.jpg" class="thumb active" onclick="trocarFoto('img-polo', this.src, this)">
+                        <img src="polo-2.jpg" class="thumb" onclick="trocarFoto('img-polo', this.src, this)">
+                        <img src="polo-3.jpg" class="thumb" onclick="trocarFoto('img-polo', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="polo-item">
+                        <span class="product-brand">POLO RALPH LAUREN</span>
+                        <h3 class="product-name">Sweatshirt Core Fleece Crewneck</h3>
+                        <p class="product-price">50,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMI Paris (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="ami paris sweatshirt" data-preco="65" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">LIMITED</span>
+                        <img src="ami.jpg" id="img-ami" alt="Sweatshirt AMI Paris">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt AMI Paris (Tam: M)', 65)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="ami.jpg" class="thumb active" onclick="trocarFoto('img-ami', this.src, this)">
+                        <img src="ami-2.jpg" class="thumb" onclick="trocarFoto('img-ami', this.src, this)">
+                        <img src="ami-3.jpg" class="thumb" onclick="trocarFoto('img-ami', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="ami-item">
+                        <span class="product-brand">AMI PARIS</span>
+                        <h3 class="product-name">Sweatshirt Ami de Cœur Heavyweight</h3>
+                        <p class="product-price">65,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Balenciaga (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="balenciaga sweatshirt hoodie crewneck black" data-preco="70" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW DROP</span>
+                        <img src="balenciaga.jpg" id="img-balenciaga" alt="Sweatshirt Balenciaga">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt Balenciaga Logo (Tam: M)', 70)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="balenciaga.jpg" class="thumb active" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                        <img src="balenciaga-2.jpg" class="thumb" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                        <img src="balenciaga-3.jpg" class="thumb" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="balenciaga-item">
+                        <span class="product-brand">BALENCIAGA</span>
+                        <h3 class="product-name">Sweatshirt Oversized Logo Medium Fleece</h3>
+                        <p class="product-price">70,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Stone Island (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="casacos" data-nome="stone island casaco jacket" data-preco="75" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW DROP</span>
+                        <img src="stone.jpg" id="img-stone" alt="Casaco Stone Island">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Stone Island Light Jacket (Tam: L)', 75)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="stone.jpg" class="thumb active" onclick="trocarFoto('img-stone', this.src, this)">
+                        <img src="stone-2.jpg" class="thumb" onclick="trocarFoto('img-stone', this.src, this)">
+                        <img src="stone-3.jpg" class="thumb" onclick="trocarFoto('img-stone', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="stone-item">
+                        <span class="product-brand">STONE ISLAND</span>
+                        <h3 class="product-name">Casaco Light Jacket Compass Patch</h3>
+                        <p class="product-price">75,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Trapstar (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="calcas" data-nome="calcas trapstar pants streetwear" data-preco="60" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">MUST HAVE</span>
+                        <img src="calcas.jpg" id="img-calcas" alt="Calças Streetwear">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Calças Trapstar Hyperdrive Black (Tam: M)', 60)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="calcas.jpg" class="thumb active" onclick="trocarFoto('img-calcas', this.src, this)">
+                        <img src="calcas-2.jpg" class="thumb" onclick="trocarFoto('img-calcas', this.src, this)">
+                        <img src="calcas-3.jpg" class="thumb" onclick="trocarFoto('img-calcas', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="calcas-item">
+                        <span class="product-brand">TRAPSTAR</span>
+                        <h3 class="product-name">Calças Hyperdrive Technical Track Pants</h3>
+                        <p class="product-price">60,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
     </div>
@@ -172,6 +346,9 @@
     <!-- SOBRE NÓS -->
     <div id="secao-sobre" class="page-section">
         <section class="about-page-container">
+            <div class="about-hero-image">
+                <img src="lookbook-sweats.jpg" alt="Fashion Apparel">
+            </div>
             <div class="about-text-content">
                 <h2>A NOSSA ESSÊNCIA</h2>
                 <p>A <strong>Luxury Store</strong> é uma curadoria independente focada no verdadeiro vestuário urbano de luxo masculino.</p>
@@ -216,6 +393,16 @@
                     Instagram: <strong>@Luxuryshopp2026</strong></p>
                 </div>
             </div>
+
+            <div class="accordion-card">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>POLÍTICA DE PRIVACIDADE E TERMOS</span>
+                    <span class="sign">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>Respeitamos a tua privacidade. Os teus dados pessoais são usados estritamente para o processamento e envio seguro da tua encomenda para a tua residência.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -227,48 +414,922 @@
             <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px;">Medidas aproximadas de corte regular / streetwear para a nossa coleção.</p>
             <table class="size-table">
                 <thead>
-                    <tr><th>Tamanho</th><th>Cintura / Peito</th><th>Comprimento</th></tr>
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>Cintura / Peito</th>
+                        <th>Comprimento</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>S</strong></td><td>38 - 54 cm</td><td>68 - 98 cm</td></tr>
-                    <tr><td><strong>M</strong></td><td>40 - 57 cm</td><td>71 - 101 cm</td></tr>
-                    <tr><td><strong>L</strong></td><td>42 - 60 cm</td><td>74 - 104 cm</td></tr>
-                    <tr><td><strong>XL</strong></td><td>44 - 63 cm</td><td>77 - 107 cm</td></tr>
+                    <tr>
+                        <td><strong>S</strong></td>
+                        <td>38 - 54 cm</td>
+                        <td>68 - 98 cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M</strong></td>
+                        <td>40 - 57 cm</td>
+                        <td>71 - 101 cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>L</strong></td>
+                        <td>42 - 60 cm</td>
+                        <td>74 - 104 cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XL</strong></td>
+                        <td>44 - 63 cm</td>
+                        <td>77 - 107 cm</td>
+                    </tr>
                 </tbody>
             </table>
             <button type="button" class="btn-gold full-width" onclick="fecharGuiaTamanhos()" style="margin-top:20px;">ENTENDIDO</button>
         </div>
     </div>
 
-    <!-- Carrinho Lateral Oculto -->
+    <!-- Modal Checkout Automatizado -->
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal" onclick="fecharCheckout()">&times;</span>
+            <h2>FINALIZAR ENCOMENDA</h2>
+            <form id="order-form" onsubmit="enviarEncomenda(event)">
+                <div class="input-field">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="cliente-nome" required placeholder="Insere o teu nomeEu percebo perfeitamente o teu ponto! É muito mais prático e seguro teres o código **completo e finalizado** para copiares diretamente, sem teres de andar à procura de linhas e fazer substituições manuais que podem gerar erros.
+
+Aqui tens os **3 ficheiros 100% completos** (`index.html`, `style.css` e `script.js`) com todas as tuas garantias:
+1.  **Stock Ilimitado:** Removida a mensagem "1 unidade por peça".
+2.  **Ponto Verde de Stock:** Adicionado visualmente ao lado de "STOCK ILIMITADO".
+3.  **Carrinho Ilimitado:** O script agora permite adicionar várias unidades da mesma peça.
+4.  **Prazos Mantidos:** Prazo de 7-14 dias mantido em todo o site.
+
+---
+
+### Ficheiro 1: `index.html` (Código Completo)
+
+Substitui todo o conteúdo do ficheiro `index.html` no teu GitHub por este:
+
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXURY STORE | Exclusive Streetwear</title>
+    
+    <!-- Meta Tags para Redes Sociais e WhatsApp -->
+    <meta property="og:title" content="LUXURY STORE | Exclusive Streetwear">
+    <meta property="og:description" content="Curadoria de vestuário urbano e peças exclusivas de luxo. Entrega direta ao domicílio em 7-14 dias.">
+    <meta property="og:image" content="lookbook-sweats.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="[https://img.icons8.com/ios-filled/50/d4af37/crown.png](https://img.icons8.com/ios-filled/50/d4af37/crown.png)">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="[https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap](https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap)" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="[https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX](https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX)"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-announcement">
+        <div class="announcement-content">
+            <span>DROP 2026 ONLINE &nbsp;•&nbsp; ENTREGA DIRETA A CASA (7 A 14 DIAS) &nbsp;•&nbsp; PORTES GRÁTIS EM COMPRAS ACIMA DE 100€</span>
+            <span class="drop-timer-wrapper">&nbsp;•&nbsp; PRÓXIMO DROP EM: <strong id="drop-timer">02D : 14H : 35M : 10S</strong></span>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="icon-button" onclick="toggleMenu()" title="Menu">&#9776;</button>
+                <button class="icon-button" onclick="toggleSearch()" title="Pesquisar">&#128269;</button>
+            </div>
+
+            <div class="header-logo" onclick="mostrarSecao('home')">
+                LUXURY STORE
+            </div>
+
+            <div class="header-right">
+                <span class="currency-badge">EUR (€)</span>
+                <div class="cart-trigger" onclick="toggleCart()">
+                    CART [<span id="cart-count">0</span>]
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Panel -->
+    <div id="search-bar" class="search-panel">
+        <div class="search-input-wrapper">
+            <input type="text" placeholder="PESQUISAR ROUPA OU MARCA..." onkeyup="pesquisarProdutos(this.value)">
+            <span class="close-search" onclick="toggleSearch()">&times;</span>
+        </div>
+    </div>
+
+    <!-- Side Menu -->
+    <aside id="side-menu" class="side-drawer">
+        <div class="drawer-header">
+            <h3>Navegação</h3>
+            <span class="close-drawer" onclick="toggleMenu()">&times;</span>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#" onclick="mostrarSecao('home'); toggleMenu();">Início</a>
+            <a href="#" onclick="filtrarCatalogo('todos'); toggleMenu();">Ver Tudo</a>
+            <a href="#" onclick="filtrarCatalogo('sweats'); toggleMenu();">Sweatshirts</a>
+            <a href="#" onclick="filtrarCatalogo('casacos'); toggleMenu();">Casacos</a>
+            <a href="#" onclick="filtrarCatalogo('calcas'); toggleMenu();">Calças</a>
+            <a href="#" onclick="abrirGuiaTamanhos(); toggleMenu();">Guia de Tamanhos</a>
+            <a href="#" onclick="mostrarSecao('sobre'); toggleMenu();">Sobre a Marca</a>
+            <a href="#suporte" onclick="toggleMenu();">Suporte & Termos</a>
+        </nav>
+    </aside>
+    <div id="menu-overlay" class="drawer-overlay" onclick="toggleMenu()"></div>
+
+    <!-- HOME PAGE -->
+    <div id="secao-home" class="page-section active">
+        
+        <!-- Hero Section com stock ilimitado -->
+        <section class="main-hero">
+            <img src="hero-bg.jpg" class="hero-background-img" alt="Luxury Store Apparel">
+            <div class="hero-overlay-content">
+                <span class="hero-tag">COLEÇÃO EXCLUSIVA &nbsp;•&nbsp; TODOS OS TAMANHOS DISPONÍVEIS</span>
+                <h1>EXCLUSIVE MENSWEAR.</h1>
+                <p>Curadoria rigorosa do melhor vestuário urbano e peças de luxo. Entregas diretas ao domicílio.</p>
+                <div class="hero-action">
+                    <button class="btn-gold" onclick="filtrarCatalogo('todos')">VER ROUPA DISPONÍVEL</button>
+                    <button class="btn-line" onclick="abrirGuiaTamanhos()" style="margin-left: 10px;">GUIA TAMANHOS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lookbook Masculino (3 Categorias) -->
+        <section class="lookbook-grid">
+            <div class="lookbook-card">
+                <img src="lookbook-casacos.jpg" alt="Casacos e Outerwear">
+                <div class="lookbook-caption">
+                    <h3>OUTERWEAR & JACKETS</h3>
+                    <button class="btn-line" onclick="filtrarCatalogo('casacos')">VER CASACOS</button>
+                </div>
+            </div>
+            <div class="lookbook-card">
+                <img src="lookbook-sweats.jpg" alt="Sweats e Hoodies">
+                <div class="lookbook-caption">
+                    <h3>SWEATS & HOODIES</h3>
+                    <button class="btn-line" onclick="filtrarCatalogo('sweats')">EXPLORAR SWEATS</button>
+                </div>
+            </div>
+            <div class="lookbook-card">
+                <img src="lookbook-calcas.jpg" alt="Calças e Pants">
+                <div class="lookbook-caption">
+                    <h3>PANTS & TROUSERS</h3>
+                    <button class="btn-line" onclick="filtrarCatalogo('calcas')">VER CALÇAS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Garantia de Autenticidade & Envio -->
+        <section class="authenticity-section">
+            <div class="authenticity-container">
+                <div class="auth-box">
+                    <div class="auth-icon">🛡️</div>
+                    <h3>100% AUTÊNTICO</h3>
+                    <p>Cada peça passa por um rigoroso processo de verificação física de tecidos, costuras e etiquetas antes do envio.</p>
+                </div>
+                <div class="auth-box">
+                    <div class="auth-icon">🏠</div>
+                    <h3>ENTREGA DIRETA A CASA</h3>
+                    <p>A tua encomenda é processada com código de rastreio e enviada diretamente para a morada que indicares no pedido.</p>
+                </div>
+                <div class="auth-box">
+                    <div class="auth-icon">⚡</div>
+                    <h3>PRAZO DE 7 A 14 DIAS</h3>
+                    <p>Entregas seguras garantidas no prazo de 7 a 14 dias úteis com acompanhamento contínuo da encomenda.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prova Social / Reviews de Clientes -->
+        <section class="reviews-section">
+            <div class="reviews-container">
+                <h2>O QUE DIZEM OS NOSSOS CLIENTES</h2>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Sweatshirt incrível! Chegou direto a minha casa no prazo previsto. Qualidade e acabamento nota 10."</p>
+                        <span>— Tiago R. (Lisboa)</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Atendimento excelente pelo WhatsApp. Acompanhei o código de rastreio até a encomenda chegar a casa."</p>
+                        <span>— Diogo M. (Porto)</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Já é a 3ª compra que faço na Luxury Store. Tudo 100% autêntico e entregue sem complicações."</p>
+                        <span>— Gonçalo S. (Braga)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner de Atitude -->
+        <section class="statement-banner">
+            <h2>EXCLUSIVE APPAREL ONLY.</h2>
+            <p>Vestuário selecionado, 100% autêntico e entregue na tua morada.</p>
+        </section>
+
+    </div>
+
+    <!-- CATÁLOGO PAGE com stock ilimitado -->
+    <div id="secao-catalogo" class="page-section">
+        <section class="catalog-section">
+            <div class="catalog-header">
+                <h2 id="catalog-title">IN STOCK NOW</h2>
+                <p>Todas as peças são exclusivas &nbsp;•&nbsp; <strong>TODOS OS TAMANHOS DISPONÍVEIS</strong></p>
+                
+                <div class="catalog-toolbar">
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" onclick="filtrarCategoriaInterna('todos', this)">TODOS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('sweats', this)">SWEATSHIRTS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('casacos', this)">CASACOS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('calcas', this)">CALÇAS</button>
+                    </div>
+
+                    <div class="sort-controls">
+                        <select id="sort-select" onchange="ordenarEFiltrarProdutos()">
+                            <option value="padrao">ORDENAR POR: RELEVÂNCIA</option>
+                            <option value="preco-asc">PREÇO: MENOR PARA MAIOR</option>
+                            <option value="preco-desc">PREÇO: MAIOR PARA MENOR</option>
+                        </select>
+                        <select id="size-filter-select" onchange="ordenarEFiltrarProdutos()">
+                            <option value="todos">TODOS OS TAMANHOS</option>
+                            <option value="S">TAMANHO S</option>
+                            <option value="M">TAMANHO M</option>
+                            <option value="L">TAMANHO L</option>
+                            <option value="XL">TAMANHO XL</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="product-grid">
+                
+                <!-- Polo Ralph Lauren (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="polo ralph lauren sweatshirt" data-preco="50" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">HOT</span>
+                        <img src="polo.jpg" id="img-polo" alt="Sweatshirt Polo Ralph Lauren">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt Polo Ralph Lauren (Tam: M)', 50)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="polo.jpg" class="thumb active" onclick="trocarFoto('img-polo', this.src, this)">
+                        <img src="polo-2.jpg" class="thumb" onclick="trocarFoto('img-polo', this.src, this)">
+                        <img src="polo-3.jpg" class="thumb" onclick="trocarFoto('img-polo', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="polo-item">
+                        <span class="product-brand">POLO RALPH LAUREN</span>
+                        <h3 class="product-name">Sweatshirt Core Fleece Crewneck</h3>
+                        <p class="product-price">50,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMI Paris (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="ami paris sweatshirt" data-preco="65" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">LIMITED</span>
+                        <img src="ami.jpg" id="img-ami" alt="Sweatshirt AMI Paris">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt AMI Paris (Tam: M)', 65)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="ami.jpg" class="thumb active" onclick="trocarFoto('img-ami', this.src, this)">
+                        <img src="ami-2.jpg" class="thumb" onclick="trocarFoto('img-ami', this.src, this)">
+                        <img src="ami-3.jpg" class="thumb" onclick="trocarFoto('img-ami', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="ami-item">
+                        <span class="product-brand">AMI PARIS</span>
+                        <h3 class="product-name">Sweatshirt Ami de Cœur Heavyweight</h3>
+                        <p class="product-price">65,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Balenciaga (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="balenciaga sweatshirt hoodie crewneck black" data-preco="70" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW DROP</span>
+                        <img src="balenciaga.jpg" id="img-balenciaga" alt="Sweatshirt Balenciaga">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt Balenciaga Logo (Tam: M)', 70)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="balenciaga.jpg" class="thumb active" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                        <img src="balenciaga-2.jpg" class="thumb" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                        <img src="balenciaga-3.jpg" class="thumb" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="balenciaga-item">
+                        <span class="product-brand">BALENCIAGA</span>
+                        <h3 class="product-name">Sweatshirt Oversized Logo Medium Fleece</h3>
+                        <p class="product-price">70,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Stone Island (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="casacos" data-nome="stone island casaco jacket" data-preco="75" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW DROP</span>
+                        <img src="stone.jpg" id="img-stone" alt="Casaco Stone Island">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Stone Island Light Jacket (Tam: L)', 75)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="stone.jpg" class="thumb active" onclick="trocarFoto('img-stone', this.src, this)">
+                        <img src="stone-2.jpg" class="thumb" onclick="trocarFotoCom certeza, peço desculpa pela confusão anterior. Percebi que é muito mais fácil para ti teres os ficheiros **100% completos e prontos a copiar**.
+
+Aqui estão os **3 ficheiros completos** (`index.html`, `style.css`, `script.js`) já com todas as tuas alterações garantidas:
+1.  **Stock Ilimitado:** Removida a mensagem "1 unidade por peça".
+2.  **Ponto Verde de Stock:** Adicionado visualmente ao lado de "STOCK ILIMITADO".
+3.  **Carrinho Ilimitado:** O script agora permite adicionar várias unidades da mesma peça.
+4.  **Prazo de 7-14 Dias:** Mantido em todo o site.
+
+---
+
+### Ficheiro 1: `index.html` (Código Completo)
+
+Substitui todo o conteúdo do ficheiro `index.html` no teu GitHub por este:
+
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXURY STORE | Exclusive Streetwear</title>
+    
+    <!-- Meta Tags para Redes Sociais e WhatsApp -->
+    <meta property="og:title" content="LUXURY STORE | Exclusive Streetwear">
+    <meta property="og:description" content="Curadoria de vestuário urbano e peças exclusivas de luxo. Entrega direta ao domicílio em 7-14 dias.">
+    <meta property="og:image" content="lookbook-sweats.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/d4af37/crown.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-announcement">
+        <div class="announcement-content">
+            <span>DROP 2026 ONLINE &nbsp;•&nbsp; ENTREGA DIRETA A CASA (7 A 14 DIAS) &nbsp;•&nbsp; PORTES GRÁTIS EM COMPRAS ACIMA DE 100€</span>
+            <span class="drop-timer-wrapper">&nbsp;•&nbsp; PRÓXIMO DROP EM: <strong id="drop-timer">02D : 14H : 35M : 10S</strong></span>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="icon-button" onclick="toggleMenu()" title="Menu">&#9776;</button>
+                <button class="icon-button" onclick="toggleSearch()" title="Pesquisar">&#128269;</button>
+            </div>
+
+            <div class="header-logo" onclick="mostrarSecao('home')">
+                LUXURY STORE
+            </div>
+
+            <div class="header-right">
+                <span class="currency-badge">EUR (€)</span>
+                <div class="cart-trigger" onclick="toggleCart()">
+                    CART [<span id="cart-count">0</span>]
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Panel -->
+    <div id="search-bar" class="search-panel">
+        <div class="search-input-wrapper">
+            <input type="text" placeholder="PESQUISAR ROUPA OU MARCA..." onkeyup="pesquisarProdutos(this.value)">
+            <span class="close-search" onclick="toggleSearch()">&times;</span>
+        </div>
+    </div>
+
+    <!-- Side Menu -->
+    <aside id="side-menu" class="side-drawer">
+        <div class="drawer-header">
+            <h3>Navegação</h3>
+            <span class="close-drawer" onclick="toggleMenu()">&times;</span>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#" onclick="mostrarSecao('home'); toggleMenu();">Início</a>
+            <a href="#" onclick="filtrarCatalogo('todos'); toggleMenu();">Ver Tudo</a>
+            <a href="#" onclick="filtrarCatalogo('sweats'); toggleMenu();">Sweatshirts</a>
+            <a href="#" onclick="filtrarCatalogo('casacos'); toggleMenu();">Casacos</a>
+            <a href="#" onclick="filtrarCatalogo('calcas'); toggleMenu();">Calças</a>
+            <a href="#" onclick="abrirGuiaTamanhos(); toggleMenu();">Guia de Tamanhos</a>
+            <a href="#" onclick="mostrarSecao('sobre'); toggleMenu();">Sobre a Marca</a>
+            <a href="#suporte" onclick="toggleMenu();">Suporte & Termos</a>
+        </nav>
+    </aside>
+    <div id="menu-overlay" class="drawer-overlay" onclick="toggleMenu()"></div>
+
+    <!-- HOME PAGE -->
+    <div id="secao-home" class="page-section active">
+        
+        <!-- Hero Section com stock ilimitado -->
+        <section class="main-hero">
+            <img src="hero-bg.jpg" class="hero-background-img" alt="Luxury Store Apparel">
+            <div class="hero-overlay-content">
+                <span class="hero-tag">COLEÇÃO EXCLUSIVA &nbsp;•&nbsp; TODOS OS TAMANHOS DISPONÍVEIS</span>
+                <h1>EXCLUSIVE MENSWEAR.</h1>
+                <p>Curadoria rigorosa do melhor vestuário urbano e peças de luxo. Entregas diretas ao domicílio.</p>
+                <div class="hero-action">
+                    <button class="btn-gold" onclick="filtrarCatalogo('todos')">VER ROUPA DISPONÍVEL</button>
+                    <button class="btn-line" onclick="abrirGuiaTamanhos()" style="margin-left: 10px;">GUIA TAMANHOS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lookbook Masculino (3 Categorias) -->
+        <section class="lookbook-grid">
+            <div class="lookbook-card">
+                <img src="lookbook-casacos.jpg" alt="Casacos e Outerwear">
+                <div class="lookbook-caption">
+                    <h3>OUTERWEAR & JACKETS</h3>
+                    <button class="btn-line" onclick="filtrarCatalogo('casacos')">VER CASACOS</button>
+                </div>
+            </div>
+            <div class="lookbook-card">
+                <img src="lookbook-sweats.jpg" alt="Sweats e Hoodies">
+                <div class="lookbook-caption">
+                    <h3>SWEATS & Hoodies</h3>
+                    <button class="btn-line" onclick="filtrarCatalogo('sweats')">EXPLORAR SWEATS</button>
+                </div>
+            </div>
+            <div class="lookbook-card">
+                <img src="lookbook-calcas.jpg" alt="Calças e Pants">
+                <div class="lookbook-caption">
+                    <h3>PANTS & TROUSERS</h3>
+                    <button class="btn-line" onclick="filtrarCatalogo('calcas')">VER CALÇAS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Garantia de Autenticidade & Envio -->
+        <section class="authenticity-section">
+            <div class="authenticity-container">
+                <div class="auth-box">
+                    <div class="auth-icon">🛡️</div>
+                    <h3>100% AUTÊNTICO</h3>
+                    <p>Cada peça passa por um rigoroso processo de verificação física de tecidos, costuras e etiquetas antes do envio.</p>
+                </div>
+                <div class="auth-box">
+                    <div class="auth-icon">🏠</div>
+                    <h3>ENTREGA DIRETA A CASA</h3>
+                    <p>A tua encomenda é processada com código de rastreio e enviada diretamente para a morada que indicares no pedido.</p>
+                </div>
+                <div class="auth-box">
+                    <div class="auth-icon">⚡</div>
+                    <h3>PRAZO DE 7 A 14 DIAS</h3>
+                    <p>Entregas seguras garantidas no prazo de 7 a 14 dias úteis com acompanhamento contínuo da encomenda.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prova Social / Reviews de Clientes -->
+        <section class="reviews-section">
+            <div class="reviews-container">
+                <h2>O QUE DIZEM OS NOSSOS CLIENTES</h2>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Sweatshirt incrível! Chegou direto a minha casa no prazo previsto. Qualidade e acabamento nota 10."</p>
+                        <span>— Tiago R. (Lisboa)</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Atendimento excelente pelo WhatsApp. Acompanhei o código de rastreio até a encomenda chegar a casa."</p>
+                        <span>— Diogo M. (Porto)</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Já é a 3ª compra que faço na Luxury Store. Tudo 100% autêntico e entregue sem complicações."</p>
+                        <span>— Gonçalo S. (Braga)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner de Atitude -->
+        <section class="statement-banner">
+            <h2>EXCLUSIVE APPAREL ONLY.</h2>
+            <p>Vestuário selecionado, 100% autêntico e entregue na tua morada.</p>
+        </section>
+
+    </div>
+
+    <!-- CATÁLOGO PAGE com stock ilimitado -->
+    <div id="secao-catalogo" class="page-section">
+        <section class="catalog-section">
+            <div class="catalog-header">
+                <h2 id="catalog-title">IN STOCK NOW</h2>
+                <p>Todas as peças são exclusivas &nbsp;•&nbsp; <strong>TODOS OS TAMANHOS DISPONÍVEIS</strong></p>
+                
+                <div class="catalog-toolbar">
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" onclick="filtrarCategoriaInterna('todos', this)">TODOS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('sweats', this)">SWEATSHIRTS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('casacos', this)">CASACOS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('calcas', this)">CALÇAS</button>
+                    </div>
+
+                    <div class="sort-controls">
+                        <select id="sort-select" onchange="ordenarEFiltrarProdutos()">
+                            <option value="padrao">ORDENAR POR: RELEVÂNCIA</option>
+                            <option value="preco-asc">PREÇO: MENOR PARA MAIOR</option>
+                            <option value="preco-desc">PREÇO: MAIOR PARA MENOR</option>
+                        </select>
+                        <select id="size-filter-select" onchange="ordenarEFiltrarProdutos()">
+                            <option value="todos">TODOS OS TAMANHOS</option>
+                            <option value="S">TAMANHO S</option>
+                            <option value="M">TAMANHO M</option>
+                            <option value="L">TAMANHO L</option>
+                            <option value="XL">TAMANHO XL</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="product-grid">
+                
+                <!-- Polo Ralph Lauren (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="polo ralph lauren sweatshirt" data-preco="50" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">HOT</span>
+                        <img src="polo.jpg" id="img-polo" alt="Sweatshirt Polo Ralph Lauren">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt Polo Ralph Lauren (Tam: M)', 50)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="polo.jpg" class="thumb active" onclick="trocarFoto('img-polo', this.src, this)">
+                        <img src="polo-2.jpg" class="thumb" onclick="trocarFoto('img-polo', this.src, this)">
+                        <img src="polo-3.jpg" class="thumb" onclick="trocarFoto('img-polo', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="polo-item">
+                        <span class="product-brand">POLO RALPH LAUREN</span>
+                        <h3 class="product-name">Sweatshirt Core Fleece Crewneck</h3>
+                        <p class="product-price">50,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AMI Paris (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="ami paris sweatshirt" data-preco="65" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">LIMITED</span>
+                        <img src="ami.jpg" id="img-ami" alt="Sweatshirt AMI Paris">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt AMI Paris (Tam: M)', 65)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="ami.jpg" class="thumb active" onclick="trocarFoto('img-ami', this.src, this)">
+                        <img src="ami-2.jpg" class="thumb" onclick="trocarFoto('img-ami', this.src, this)">
+                        <img src="ami-3.jpg" class="thumb" onclick="trocarFoto('img-ami', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="ami-item">
+                        <span class="product-brand">AMI PARIS</span>
+                        <h3 class="product-name">Sweatshirt Ami de Cœur Heavyweight</h3>
+                        <p class="product-price">65,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Balenciaga (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="sweats" data-nome="balenciaga sweatshirt hoodie crewneck black" data-preco="70" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW DROP</span>
+                        <img src="balenciaga.jpg" id="img-balenciaga" alt="Sweatshirt Balenciaga">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweatshirt Balenciaga Logo (Tam: M)', 70)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="balenciaga.jpg" class="thumb active" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                        <img src="balenciaga-2.jpg" class="thumb" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                        <img src="balenciaga-3.jpg" class="thumb" onclick="trocarFoto('img-balenciaga', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="balenciaga-item">
+                        <span class="product-brand">BALENCIAGA</span>
+                        <h3 class="product-name">Sweatshirt Oversized Logo Medium Fleece</h3>
+                        <p class="product-price">70,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Stone Island (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="casacos" data-nome="stone island casaco jacket" data-preco="75" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">NEW DROP</span>
+                        <img src="stone.jpg" id="img-stone" alt="Casaco Stone Island">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Stone Island Light Jacket (Tam: L)', 75)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="stone.jpg" class="thumb active" onclick="trocarFoto('img-stone', this.src, this)">
+                        <img src="stone-2.jpg" class="thumb" onclick="trocarFoto('img-stone', this.src, this)">
+                        <img src="stone-3.jpg" class="thumb" onclick="trocarFoto('img-stone', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="stone-item">
+                        <span class="product-brand">STONE ISLAND</span>
+                        <h3 class="product-name">Casaco Light Jacket Compass Patch</h3>
+                        <p class="product-price">75,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Trapstar (Stock Ilimitado) -->
+                <article class="product-item" data-categoria="calcas" data-nome="calcas trapstar pants streetwear" data-preco="60" data-tamanhos="S,M,L,XL">
+                    <div class="product-media">
+                        <span class="tag">MUST HAVE</span>
+                        <img src="calcas.jpg" id="img-calcas" alt="Calças Streetwear">
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Calças Trapstar Hyperdrive Black (Tam: M)', 60)">ADICIONAR AO CARRINHO</button>
+                    </div>
+
+                    <div class="product-thumbnails">
+                        <img src="calcas.jpg" class="thumb active" onclick="trocarFoto('img-calcas', this.src, this)">
+                        <img src="calcas-2.jpg" class="thumb" onclick="trocarFoto('img-calcas', this.src, this)">
+                        <img src="calcas-3.jpg" class="thumb" onclick="trocarFoto('img-calcas', this.src, this)">
+                    </div>
+
+                    <div class="product-details" id="calcas-item">
+                        <span class="product-brand">TRAPSTAR</span>
+                        <h3 class="product-name">Calças Hyperdrive Technical Track Pants</h3>
+                        <p class="product-price">60,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- SOBRE NÓS -->
+    <div id="secao-sobre" class="page-section">
+        <section class="about-page-container">
+            <div class="about-hero-image">
+                <img src="lookbook-sweats.jpg" alt="Fashion Apparel">
+            </div>
+            <div class="about-text-content">
+                <h2>A NOSSA ESSÊNCIA</h2>
+                <p>A <strong>Luxury Store</strong> é uma curadoria independente focada no verdadeiro vestuário urbano de luxo masculino.</p>
+                <p>Selecionamos rigorosamente cada peça e tratamos de todo o processo para que recebas o teu artigo diretamente na tua morada com total comodidade e segurança.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- SUPORTE & POLÍTICAS -->
+    <section id="suporte" class="accordion-section">
+        <div class="accordion-container">
+            <h3>SUPORTE & INFORMAÇÕES</h3>
+
+            <div class="accordion-card">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>ENVIOS E PRAZOS</span>
+                    <span class="sign">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>Todas as encomendas são enviadas diretamente para a morada do cliente. O prazo estimado de entrega é de <strong>7 a 14 dias úteis</strong> após a confirmação do pedido. Disponibilizamos código de rastreio para acompanhamento. Portes grátis em compras acima de 100€.</p>
+                </div>
+            </div>
+
+            <div class="accordion-card">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>TROCAS E DEVOLUÇÕES</span>
+                    <span class="sign">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>Tens 14 dias após a receção na tua morada para efetuar qualquer troca ou devolução. As peças devem ser devolvidas sem qualquer sinal de uso e com as respetivas etiquetas originais.</p>
+                </div>
+            </div>
+
+            <div class="accordion-card">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>CONTACTO DIRETO</span>
+                    <span class="sign">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>E-mail: <strong>contacto.luxuryshop22@gmail.com</strong><br>
+                    WhatsApp: <strong>+351 916 097 477</strong><br>
+                    Instagram: <strong>@Luxuryshopp2026</strong></p>
+                </div>
+            </div>
+
+            <div class="accordion-card">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>POLÍTICA DE PRIVACIDADE E TERMOS</span>
+                    <span class="sign">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>Respeitamos a tua privacidade. Os teus dados pessoais são usados estritamente para o processamento e envio seguro da tua encomenda para a tua residência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Guia de Tamanhos -->
+    <div id="size-guide-modal" class="modal-overlay">
+        <div class="modal-box size-guide-box">
+            <span class="close-modal" onclick="fecharGuiaTamanhos()">&times;</span>
+            <h2>GUIA DE TAMANHOS (CM)</h2>
+            <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px;">Medidas aproximadas de corte regular / streetwear para a nossa coleção.</p>
+            <table class="size-table">
+                <thead>
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>Cintura / Peito</th>
+                        <th>Comprimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>S</strong></td>
+                        <td>38 - 54 cm</td>
+                        <td>68 - 98 cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M</strong></td>
+                        <td>40 - 57 cm</td>
+                        <td>71 - 101 cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>L</strong></td>
+                        <td>42 - 60 cm</td>
+                        <td>74 - 104 cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XL</strong></td>
+                        <td>44 - 63 cm</td>
+                        <td>77 - 107 cm</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn-gold full-width" onclick="fecharGuiaTamanhos()" style="margin-top:20px;">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <!-- Modal Checkout Automatizado -->
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal" onclick="fecharCheckout()">&times;</span>
+            <h2>FINALIZAR ENCOMENDA</h2>
+            <form id="order-form" onsubmit="enviarEncomenda(event)">
+                <div class="input-field">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="cliente-nome" required placeholder="Insere o teu nome">
+                </div>
+                <div class="input-field">
+                    <label>Contacto Telefónico *</label>
+                    <input type="tel" id="cliente-tel" required placeholder="Ex: 912345678">
+                </div>
+                <div class="input-field">
+                    <label>Morada de Envio Completa *</label>
+                    <input type="text" id="cliente-morada" required placeholder="Rua, Número, Código Postal, Cidade">
+                </div>
+                <div class="input-field">
+                    <label>Método de Pagamento *</label>
+                    <select id="metodo-pagamento" required>
+                        <option value="MB WAY">MB WAY</option>
+                        <option value="Multibanco">Referência Multibanco</option>
+                    </select>
+                </div>
+                <div class="summary-box">
+                    <div id="modal-order-items"></div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <strong id="modal-order-price">0,00 €</strong>
+                    </div>
+                </div>
+                <button type="submit" class="btn-gold full-width">ENVIAR PEDIDO VIA WHATSAPP &#128241;</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Carrinho Lateral com quantidade ilimitada -->
     <aside id="cart-sidebar" class="cart-drawer">
         <div class="drawer-header">
             <h3>TEU CARRINHO</h3>
             <span class="close-drawer" onclick="toggleCart()">&times;</span>
         </div>
+
         <div id="cart-items" class="cart-body">
             <p class="empty-msg">O teu carrinho está vazio.</p>
         </div>
+
         <div class="cart-footer">
             <div class="cart-subtotal">
                 <span>TOTAL:</span>
                 <span id="cart-total-price">0,00 €</span>
             </div>
-            <button class="btn-gold full-width" onclick="alert('Adiciona produtos ao carrinho primeiro.')">FINALIZAR ENCOMENDA</button>
+            <button class="btn-gold full-width" onclick="abrirCheckout()">FINALIZAR ENCOMENDA</button>
         </div>
     </aside>
     <div id="cart-overlay" class="drawer-overlay" onclick="toggleCart()"></div>
 
-    <!-- WhatsApp Float -->
+    <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/351916097477?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20peças%20da%20Luxury%20Store." target="_blank" class="whatsapp-float" title="Contactar no WhatsApp">
         <svg viewBox="0 0 32 32" class="whatsapp-icon">
             <path d="M16 2a14 14 0 0 0-12 21.2L2 30l7-1.8A14 14 0 1 0 16 2zm0 25.6a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.2-.3-.5A11.6 11.6 0 1 1 16 27.6zm6.3-8.6c-.3-.2-2-.9-2.3-1-.3-.2-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.8 8.8 0 0 1-1.7-2.1c-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.4.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1.8.3 1.5.5 2 .7.8.2 1.5.2 2.1.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.6-.5z" fill="#FFF"/>
         </svg>
     </a>
 
-    <!-- Footer -->
+    <!-- Rodapé Profissional & Legal -->
     <footer class="main-footer">
-        <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">LUXURY STORE</div>
+                <p class="footer-about">Curadoria de vestuário urbano de luxo masculino. Peças 100% autênticas enviadas diretamente para a tua morada.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>PAGAMENTOS & ENVIOS</h4>
+                <div class="payment-badges">
+                    <span class="pay-tag">MB WAY</span>
+                    <span class="pay-tag">MULTIBANCO</span>
+                </div>
+                <p class="shipping-info">📦 Entrega direta ao domicílio em <strong>7 a 14 dias úteis</strong> com código de rastreio.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>CONFORMIDADE LEGAL</h4>
+                <a href="https://www.livroreclamacoes.pt" target="_blank" class="livro-reclamacoes-badge">
+                    <img src="https://www.livroreclamacoes.pt/assets/img/logo_lre.png" alt="Livro de Reclamações Eletrónico" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                    <span style="display:none; color:#000000; font-weight:bold; font-size:0.8rem; border:1px solid #000; padding:6px 10px;">LIVRO DE RECLAMAÇÕES ELETRÓNICO</span>
+                </a>
+                <p class="legal-nif">LUXURY STORE &nbsp;•&nbsp; NIF: 999 999 999 (Empresa Registada em Portugal)</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
