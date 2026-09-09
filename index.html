@@ -5,31 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUXURY STORE | Exclusive Streetwear</title>
     
-    <!-- Meta Tags para Redes Sociais e WhatsApp -->
     <meta property="og:title" content="LUXURY STORE | Exclusive Streetwear">
     <meta property="og:description" content="Curadoria de vestuário urbano e peças exclusivas de luxo. Entrega direta ao domicílio em 7-14 dias.">
-    <meta property="og:image" content="hero-bg.jpg">
+    <meta property="og:image" content="carhartt-preto-1.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/d4af37/crown.png">
-
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
+    <!-- Announcement Bar -->
     <div class="top-announcement">
         <div class="announcement-content">
             <span>DROP 2026 ONLINE &nbsp;•&nbsp; ENTREGA DIRETA A CASA (7 A 14 DIAS) &nbsp;•&nbsp; PORTES GRÁTIS EM COMPRAS ACIMA DE 100€</span>
@@ -90,7 +77,7 @@
         
         <!-- Hero Section -->
         <section class="main-hero">
-            <img src="hero-bg.jpg" class="hero-background-img" alt="Luxury Store Apparel">
+            <img src="carhartt-preto-1.jpg" class="hero-background-img" alt="Luxury Store Apparel">
             <div class="hero-overlay-content">
                 <span class="hero-tag">COLEÇÃO EXCLUSIVA &nbsp;•&nbsp; TODOS OS TAMANHOS DISPONÍVEIS</span>
                 <h1>EXCLUSIVE MENSWEAR.</h1>
@@ -105,21 +92,21 @@
         <!-- Lookbook Grid -->
         <section class="lookbook-grid">
             <div class="lookbook-card">
-                <img src="lookbook-casacos.jpg" alt="Casacos e Outerwear">
+                <img src="carhartt-preto-1.jpg" alt="Casacos e Outerwear">
                 <div class="lookbook-caption">
                     <h3>OUTERWEAR & JACKETS</h3>
                     <button class="btn-line" onclick="filtrarCatalogo('casacos')">VER CASACOS</button>
                 </div>
             </div>
             <div class="lookbook-card">
-                <img src="lookbook-sweats.jpg" alt="Sweats e Hoodies">
+                <img src="carhartt-cinzento-1.jpg" alt="Sweats e Hoodies">
                 <div class="lookbook-caption">
                     <h3>SWEATS & HOODIES</h3>
                     <button class="btn-line" onclick="filtrarCatalogo('sweats')">EXPLORAR SWEATS</button>
                 </div>
             </div>
             <div class="lookbook-card">
-                <img src="lookbook-calcas.jpg" alt="Calças e Pants">
+                <img src="carhartt-preto-2.jpg" alt="Calças e Pants">
                 <div class="lookbook-caption">
                     <h3>PANTS & TROUSERS</h3>
                     <button class="btn-line" onclick="filtrarCatalogo('calcas')">VER CALÇAS</button>
@@ -127,7 +114,7 @@
             </div>
         </section>
 
-        <!-- Garantias e Envio -->
+        <!-- Garantias -->
         <section class="authenticity-section">
             <div class="authenticity-container">
                 <div class="auth-box">
@@ -148,7 +135,6 @@
             </div>
         </section>
 
-        <!-- Banner de Atitude -->
         <section class="statement-banner">
             <h2>EXCLUSIVE APPAREL ONLY.</h2>
             <p>Vestuário selecionado, 100% autêntico e entregue na tua morada.</p>
@@ -156,7 +142,7 @@
 
     </div>
 
-    <!-- CATÁLOGO PAGE com a Carhartt separada -->
+    <!-- CATÁLOGO PAGE -->
     <div id="secao-catalogo" class="page-section">
         <section class="catalog-section">
             <div class="catalog-header">
@@ -170,32 +156,17 @@
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('casacos', this)">CASACOS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('calcas', this)">CALÇAS</button>
                     </div>
-
-                    <div class="sort-controls">
-                        <select id="sort-select" onchange="ordenarEFiltrarProdutos()">
-                            <option value="padrao">ORDENAR POR: RELEVÂNCIA</option>
-                            <option value="preco-asc">PREÇO: MENOR PARA MAIOR</option>
-                            <option value="preco-desc">PREÇO: MAIOR PARA MENOR</option>
-                        </select>
-                        <select id="size-filter-select" onchange="ordenarEFiltrarProdutos()">
-                            <option value="todos">TODOS OS TAMANHOS</option>
-                            <option value="S">TAMANHO S</option>
-                            <option value="M">TAMANHO M</option>
-                            <option value="L">TAMANHO L</option>
-                            <option value="XL">TAMANHO XL</option>
-                        </select>
-                    </div>
                 </div>
             </div>
 
             <div class="products-grid" id="product-grid">
                 
-                <!-- Casaco Carhartt Preto (Stock Ilimitado) -->
-                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket preto black" data-preco="63" data-tamanhos="S,M,L,XL">
+                <!-- Casaco Carhartt Preto -->
+                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket preto black" data-preco="63">
                     <div class="product-media">
                         <span class="tag">NEW</span>
                         <img src="carhartt-preto-1.jpg" id="img-carhartt-preto" alt="Casaco Carhartt Preto">
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Preto (Tam: M)', 63)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Detroit Black', 63)">ADICIONAR AO CARRINHO</button>
                     </div>
                     
                     <div class="product-thumbnails">
@@ -203,7 +174,7 @@
                         <img src="carhartt-preto-2.jpg" class="thumb" onclick="trocarFoto('img-carhartt-preto', this.src, this)">
                     </div>
 
-                    <div class="product-details" id="carhartt-preto-item">
+                    <div class="product-details">
                         <span class="product-brand">CARHARTT WIP</span>
                         <h3 class="product-name">Detroit Jacket - Black</h3>
                         <p class="product-price">63,00 €</p>
@@ -214,12 +185,12 @@
                     </div>
                 </article>
 
-                <!-- Casaco Carhartt Cinzento (Stock Ilimitado) -->
-                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket cinzento grey" data-preco="63" data-tamanhos="S,M,L,XL">
+                <!-- Casaco Carhartt Cinzento -->
+                <article class="product-item" data-categoria="casacos" data-nome="casaco carhartt jacket cinzento grey" data-preco="63">
                     <div class="product-media">
                         <span class="tag">NEW</span>
                         <img src="carhartt-cinzento-1.jpg" id="img-carhartt-cinzento" alt="Casaco Carhartt Cinzento">
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Cinzento (Tam: M)', 63)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Detroit Grey', 63)">ADICIONAR AO CARRINHO</button>
                     </div>
                     
                     <div class="product-thumbnails">
@@ -227,7 +198,7 @@
                         <img src="carhartt-cinzento-2.jpg" class="thumb" onclick="trocarFoto('img-carhartt-cinzento', this.src, this)">
                     </div>
 
-                    <div class="product-details" id="carhartt-cinzento-item">
+                    <div class="product-details">
                         <span class="product-brand">CARHARTT WIP</span>
                         <h3 class="product-name">Detroit Jacket - Grey</h3>
                         <p class="product-price">63,00 €</p>
@@ -245,9 +216,6 @@
     <!-- SOBRE NÓS -->
     <div id="secao-sobre" class="page-section">
         <section class="about-page-container">
-            <div class="about-hero-image">
-                <img src="lookbook-sweats.jpg" alt="Fashion Apparel">
-            </div>
             <div class="about-text-content">
                 <h2>A NOSSA ESSÊNCIA</h2>
                 <p>A <strong>Luxury Store</strong> é uma curadoria independente focada no verdadeiro vestuário urbano de luxo masculino.</p>
@@ -256,7 +224,7 @@
         </section>
     </div>
 
-    <!-- SUPORTE & POLÍTICAS -->
+    <!-- SUPORTE -->
     <section id="suporte" class="accordion-section">
         <div class="accordion-container">
             <h3>SUPORTE & INFORMAÇÕES</h3>
@@ -292,16 +260,6 @@
                     Instagram: <strong>@Luxuryshopp2026</strong></p>
                 </div>
             </div>
-
-            <div class="accordion-card">
-                <button class="accordion-btn" onclick="toggleAccordion(this)">
-                    <span>POLÍTICA DE PRIVACIDADE E TERMOS</span>
-                    <span class="sign">+</span>
-                </button>
-                <div class="accordion-body">
-                    <p>Respeitamos a tua privacidade. Os teus dados pessoais são usados estritamente para o processamento e envio seguro da tua encomenda para a tua residência.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -310,7 +268,7 @@
         <div class="modal-box size-guide-box">
             <span class="close-modal" onclick="fecharGuiaTamanhos()">&times;</span>
             <h2>GUIA DE TAMANHOS (CM)</h2>
-            <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px;">Medidas aproximadas de corte regular / streetwear para a nossa coleção.</p>
+            <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px;">Medidas aproximadas para a nossa coleção.</p>
             <table class="size-table">
                 <thead>
                     <tr><th>Tamanho</th><th>Cintura / Peito</th><th>Comprimento</th></tr>
@@ -323,43 +281,6 @@
                 </tbody>
             </table>
             <button type="button" class="btn-gold full-width" onclick="fecharGuiaTamanhos()" style="margin-top:20px;">ENTENDIDO</button>
-        </div>
-    </div>
-
-    <!-- Modal Checkout Automatizado -->
-    <div id="checkout-modal" class="modal-overlay">
-        <div class="modal-box">
-            <span class="close-modal" onclick="fecharCheckout()">&times;</span>
-            <h2>FINALIZAR ENCOMENDA</h2>
-            <form id="order-form" onsubmit="enviarEncomenda(event)">
-                <div class="input-field">
-                    <label>Nome Completo *</label>
-                    <input type="text" id="cliente-nome" required placeholder="Insere o teu nome">
-                </div>
-                <div class="input-field">
-                    <label>Contacto Telefónico *</label>
-                    <input type="tel" id="cliente-tel" required placeholder="Ex: 912345678">
-                </div>
-                <div class="input-field">
-                    <label>Morada de Envio Completa *</label>
-                    <input type="text" id="cliente-morada" required placeholder="Rua, Número, Código Postal, Cidade">
-                </div>
-                <div class="input-field">
-                    <label>Método de Pagamento *</label>
-                    <select id="metodo-pagamento" required>
-                        <option value="MB WAY">MB WAY</option>
-                        <option value="Multibanco">Referência Multibanco</option>
-                    </select>
-                </div>
-                <div class="summary-box">
-                    <div id="modal-order-items"></div>
-                    <div class="summary-total">
-                        <span>Total:</span>
-                        <strong id="modal-order-price">0,00 €</strong>
-                    </div>
-                </div>
-                <button type="submit" class="btn-gold full-width">ENVIAR PEDIDO VIA WHATSAPP &#128241;</button>
-            </form>
         </div>
     </div>
 
@@ -377,48 +298,21 @@
                 <span>TOTAL:</span>
                 <span id="cart-total-price">0,00 €</span>
             </div>
-            <button class="btn-gold full-width" onclick="abrirCheckout()">FINALIZAR ENCOMENDA</button>
+            <button class="btn-gold full-width" onclick="finalizarWhatsApp()">FINALIZAR VIA WHATSAPP</button>
         </div>
     </aside>
     <div id="cart-overlay" class="drawer-overlay" onclick="toggleCart()"></div>
 
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/351916097477?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20peças%20da%20Luxury%20Store." target="_blank" class="whatsapp-float" title="Contactar no WhatsApp">
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/351916097477?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20peças%20da%20Luxury%20Store." target="_blank" class="whatsapp-float">
         <svg viewBox="0 0 32 32" class="whatsapp-icon">
             <path d="M16 2a14 14 0 0 0-12 21.2L2 30l7-1.8A14 14 0 1 0 16 2zm0 25.6a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.2-.3-.5A11.6 11.6 0 1 1 16 27.6zm6.3-8.6c-.3-.2-2-.9-2.3-1-.3-.2-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.8 8.8 0 0 1-1.7-2.1c-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.4.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1.8.3 1.5.5 2 .7.8.2 1.5.2 2.1.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.6-.5z" fill="#FFF"/>
         </svg>
     </a>
 
-    <!-- Rodapé Professional & Legal -->
+    <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-brand">LUXURY STORE</div>
-                <p class="footer-about">Curadoria de vestuário urbano de luxo masculino. Peças 100% autênticas enviadas diretamente para a tua morada.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h4>PAGAMENTOS & ENVIOS</h4>
-                <div class="payment-badges">
-                    <span class="pay-tag">MB WAY</span>
-                    <span class="pay-tag">MULTIBANCO</span>
-                </div>
-                <p class="shipping-info">📦 Entrega direta ao domicílio em <strong>7 a 14 dias úteis</strong> com código de rastreio.</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>CONFORMIDADE LEGAL</h4>
-                <a href="https://www.livroreclamacoes.pt" target="_blank" class="livro-reclamacoes-badge">
-                    <img src="https://www.livroreclamacoes.pt/assets/img/logo_lre.png" alt="Livro de Reclamações Eletrónico" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-                    <span style="display:none; color:#000000; font-weight:bold; font-size:0.8rem; border:1px solid #000; padding:6px 10px;">LIVRO DE RECLAMAÇÕES ELETRÓNICO</span>
-                </a>
-                <p class="legal-nif">LUXURY STORE &nbsp;•&nbsp; NIF: 999 999 999 (Empresa Registada em Portugal)</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
-        </div>
+        <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
 
     <script src="script.js"></script>
