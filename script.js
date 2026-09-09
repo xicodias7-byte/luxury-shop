@@ -193,16 +193,3 @@ function abrirCheckout() {
     alert("Simulação de Checkout via WhatsApp ativada.");
     toggleCart();
 }
-
-// Lógica Específica para a Carhartt
-let carharttColor = 'preto'; // Cor padrão
-
-function setCarharttColor(color) {
-    carharttColor = color;
-}
-
-function adicionarAoCarrinhoCarhartt() {
-    const nome = `Casaco Carhartt Detroit (Cor: ${carharttColor.toUpperCase()})`;
-    const preco = 80;
-    adicionarAoCarrinho(nome, preco);
-}
