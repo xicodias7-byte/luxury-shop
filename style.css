@@ -11,7 +11,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Announcement Bar */
+/* Barra de Anúncio Superior */
 .top-announcement {
     background: #111111;
     color: #d4af37;
@@ -23,7 +23,7 @@ body {
     border-bottom: 1px solid #222222;
 }
 
-/* Header */
+/* Header & Navegação */
 .main-header {
     background: #000000;
     border-bottom: 1px solid #1a1a1a;
@@ -66,7 +66,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* Hero Section */
+/* Banner Principal */
 .main-hero {
     position: relative;
     height: 80vh;
@@ -154,7 +154,7 @@ body {
     color: #000000;
 }
 
-/* Lookbook */
+/* Lookbook (3 Colunas) */
 .lookbook-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -197,16 +197,116 @@ body {
     margin-bottom: 15px;
 }
 
-/* Catálogo Vazio */
+/* Secção 100% Autêntico e Prazos (3 Caixas Organizadoras) */
+.authenticity-section {
+    padding: 60px 20px;
+    background: #050505;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.authenticity-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.auth-box {
+    background: #000000;
+    padding: 30px;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.auth-box .auth-icon {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.auth-box h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.auth-box p {
+    font-size: 0.9rem;
+    color: #888888;
+    line-height: 1.5;
+}
+
+/* Banner de Atitude */
+.statement-banner {
+    padding: 80px 20px;
+    text-align: center;
+    background: #000000;
+}
+
+.statement-banner h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.statement-banner p {
+    color: #666666;
+    letter-spacing: 2px;
+}
+
+/* Acordeão de Suporte & Informações */
+.accordion-section {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-container h3 {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.accordion-card {
+    border-bottom: 1px solid #222222;
+    margin-bottom: 10px;
+}
+
+.accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 18px 0;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion-body {
+    padding-bottom: 20px;
+    color: #888888;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* Catálogo & Filtros */
 .catalog-section {
     padding: 60px 20px;
     max-width: 1400px;
     margin: 0 auto;
     text-align: center;
-}
-
-.filter-tabs {
-    margin-bottom: 40px;
 }
 
 .filter-btn {
@@ -218,7 +318,6 @@ body {
     cursor: pointer;
     font-weight: 700;
     letter-spacing: 2px;
-    transition: 0.3s;
 }
 
 .filter-btn.active, .filter-btn:hover {
@@ -239,12 +338,7 @@ body {
     margin-bottom: 10px;
 }
 
-.no-products-msg p {
-    color: #666666;
-    letter-spacing: 1px;
-}
-
-/* Drawer / Menus Laterais Corrigidos */
+/* Menus Laterais (Drawers) Ocultos */
 .side-drawer, .cart-drawer {
     position: fixed;
     top: 0;
