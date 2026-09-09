@@ -244,18 +244,22 @@ body {
     letter-spacing: 1px;
 }
 
-/* Drawer / Menus Laterais */
+/* Drawer / Menus Laterais Corrigidos */
 .side-drawer, .cart-drawer {
     position: fixed;
     top: 0;
     bottom: 0;
     width: 320px;
     background: #000000;
-    border-left: 1px solid #222222;
     z-index: 200;
     padding: 30px;
-    transform: translateX(100%);
     transition: 0.4s ease;
+}
+
+.cart-drawer {
+    right: 0;
+    border-left: 1px solid #222222;
+    transform: translateX(100%);
 }
 
 .side-drawer {
@@ -265,7 +269,7 @@ body {
 }
 
 .side-drawer.active, .cart-drawer.active {
-    transform: translateX(0);
+    transform: translateX(0) !important;
 }
 
 .drawer-overlay {
@@ -293,6 +297,29 @@ body {
     border-bottom: 1px solid #111111;
     font-weight: 600;
     letter-spacing: 2px;
+}
+
+/* Search Panel */
+.search-panel {
+    display: none;
+    background: #0a0a0a;
+    padding: 15px;
+    border-bottom: 1px solid #222;
+}
+
+.search-input-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
 }
 
 /* Modais & WhatsApp */
