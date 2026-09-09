@@ -73,7 +73,6 @@ body {
     letter-spacing: 2px;
 }
 
-/* Painel de Pesquisa Escondido por Defeito */
 .search-panel {
     display: none;
     background: #0a0a0a;
@@ -319,19 +318,21 @@ body {
 
 .btn-add-cart {
     width: 100%;
-    background: #111111;
-    color: #d4af37;
+    background: #d4af37;
+    color: #000000;
     border: none;
-    border-top: 1px solid #222222;
     padding: 14px;
-    font-weight: 700;
-    font-size: 0.8rem;
+    font-weight: 800;
+    font-size: 0.85rem;
     letter-spacing: 2px;
     cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease;
+    margin-top: 15px;
 }
 
 .btn-add-cart:hover {
-    background: #d4af37;
+    background: #ffffff;
     color: #000000;
 }
 
