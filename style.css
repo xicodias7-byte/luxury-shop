@@ -154,7 +154,7 @@ body {
     color: #000000;
 }
 
-/* Lookbook Grid */
+/* Lookbook */
 .lookbook-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -197,117 +197,11 @@ body {
     margin-bottom: 15px;
 }
 
-/* Secção de Autenticidade */
-.authenticity-section {
-    padding: 60px 20px;
-    background: #050505;
-    border-top: 1px solid #111;
-    border-bottom: 1px solid #111;
-}
-
-.authenticity-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.auth-box {
-    background: #000000;
-    padding: 30px;
-    border: 1px solid #1a1a1a;
-    border-radius: 4px;
-    text-align: left;
-}
-
-.auth-box .auth-icon {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.auth-box h3 {
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.auth-box p {
-    font-size: 0.9rem;
-    color: #888888;
-    line-height: 1.5;
-}
-
-/* Statement Banner */
-.statement-banner {
-    padding: 80px 20px;
-    text-align: center;
-    background: #000000;
-}
-
-.statement-banner h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-}
-
-.statement-banner p {
-    color: #666666;
-    letter-spacing: 2px;
-}
-
-/* Accordion Suporte */
-.accordion-section {
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.accordion-container h3 {
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.accordion-card {
-    border-bottom: 1px solid #222222;
-    margin-bottom: 10px;
-}
-
-.accordion-btn {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #ffffff;
-    padding: 18px 0;
-    text-align: left;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-}
-
-.accordion-body {
-    display: none;
-    padding-bottom: 20px;
-    color: #888888;
-    font-size: 0.85rem;
-    line-height: 1.6;
-}
-
-/* Catálogo & Filtros */
+/* Catálogo */
 .catalog-section {
     padding: 60px 20px;
     max-width: 1400px;
     margin: 0 auto;
-    text-align: center;
 }
 
 .filter-btn {
@@ -330,25 +224,116 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
-    margin-top: 40px;
 }
 
-/* Drawers Ocultos por defeito */
+.product-item {
+    background: #0a0a0a;
+    border: 1px solid #111111;
+    overflow: hidden;
+}
+
+.product-media {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.product-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.product-item:hover .product-media img {
+    transform: scale(1.05);
+}
+
+.product-thumbnails {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 8px;
+    cursor: pointer;
+    border: 1px solid #222;
+}
+
+.thumb.active {
+    border-color: #d4af37;
+}
+
+.product-details {
+    padding: 20px;
+}
+
+.product-brand {
+    font-size: 0.75rem;
+    color: #666666;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.stock-badge {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #cccccc;
+    padding: 8px 12px;
+    border: 1px solid #222222;
+    background: #000;
+}
+
+.stock-badge .stock-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Ponto de stock verde quando há stock ilimitado */
+.stock-badge.in-stock .stock-dot {
+    background-color: #2ecc71; /* Verde esmeralda */
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.5); /* Brilho suave verde */
+}
+
+/* Drawer / Menus Laterais */
 .side-drawer, .cart-drawer {
     position: fixed;
     top: 0;
     bottom: 0;
     width: 320px;
     background: #000000;
+    border-left: 1px solid #222222;
     z-index: 200;
     padding: 30px;
-    transition: 0.4s ease;
-}
-
-.cart-drawer {
-    right: 0;
-    border-left: 1px solid #222222;
     transform: translateX(100%);
+    transition: 0.4s ease;
 }
 
 .side-drawer {
@@ -358,7 +343,7 @@ body {
 }
 
 .side-drawer.active, .cart-drawer.active {
-    transform: translateX(0) !important;
+    transform: translateX(0);
 }
 
 .drawer-overlay {
@@ -386,67 +371,6 @@ body {
     border-bottom: 1px solid #111111;
     font-weight: 600;
     letter-spacing: 2px;
-}
-
-/* Search Panel */
-.search-panel {
-    display: none;
-    background: #0a0a0a;
-    padding: 15px;
-    border-bottom: 1px solid #222;
-}
-
-.search-input-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-}
-
-.search-input-wrapper input {
-    width: 100%;
-    padding: 10px;
-    background: #000;
-    border: 1px solid #333;
-    color: #fff;
-}
-
-/* Modal e WhatsApp */
-.modal-overlay {
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 300;
-}
-
-.modal-box {
-    background: #0a0a0a;
-    border: 1px solid #222222;
-    padding: 40px;
-    width: 90%;
-    max-width: 500px;
-}
-
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: #25d366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 90;
-}
-
-.whatsapp-icon {
-    width: 28px;
-    height: 28px;
 }
 
 .main-footer {
