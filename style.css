@@ -72,7 +72,111 @@ body {
     display: block;
 }
 
-/* Catálogo & Grelha de Produtos */
+/* Banner Principal */
+.main-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+    z-index: 1;
+}
+
+.hero-overlay-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-tag {
+    color: #d4af37;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.hero-overlay-content h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-overlay-content p {
+    font-size: 1rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+.btn-gold {
+    background: #d4af37;
+    color: #000000;
+    border: none;
+    padding: 14px 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.btn-line {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 14px 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+/* Lookbook (3 Colunas) */
+.lookbook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 50px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.lookbook-card {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+}
+
+.lookbook-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+.lookbook-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+}
+
+/* Catálogo e Imagens de Produtos Limitadas */
 .catalog-section {
     padding: 60px 20px;
     max-width: 1200px;
@@ -80,149 +184,64 @@ body {
     text-align: center;
 }
 
-.catalog-header {
-    margin-bottom: 40px;
-}
-
-.filter-btn {
-    background: none;
-    border: 1px solid #333333;
-    color: #888888;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.filter-btn.active, .filter-btn:hover {
-    border-color: #d4af37;
-    color: #d4af37;
-}
-
-/* FORMATAÇÃO DAS CAIXAS DOS PRODUTOS */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     margin-top: 30px;
 }
 
 .product-item {
     background: #0a0a0a;
     border: 1px solid #1a1a1a;
-    border-radius: 4px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 
-/* FORÇAR A IMAGEM PRINCIPAL A FICAR COM TAMANHO PERFEITO */
 .product-media {
     position: relative;
     width: 100%;
-    height: 420px;
-    background: #000000;
-    overflow: hidden;
+    height: 380px;
+    background: #000;
 }
 
 .product-media img {
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
-    padding: 15px;
-    transition: transform 0.4s ease;
 }
 
-.product-item:hover .product-media img {
-    transform: scale(1.03);
-}
-
-.btn-add-cart {
-    width: 100%;
-    background: #111111;
-    color: #d4af37;
-    border: none;
-    border-top: 1px solid #222222;
-    padding: 14px;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-add-cart:hover {
-    background: #d4af37;
-    color: #000000;
-}
-
-/* FORMATAÇÃO DAS MINIATURAS */
 .product-thumbnails {
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding: 12px;
+    padding: 10px;
     background: #050505;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
 }
 
 .thumb {
-    width: 60px !important;
-    height: 60px !important;
+    width: 50px !important;
+    height: 50px !important;
     object-fit: contain !important;
     cursor: pointer;
-    border: 1px solid #222222;
-    padding: 2px;
-    background: #000;
-    transition: 0.3s;
+    border: 1px solid #222;
 }
 
-.thumb.active, .thumb:hover {
+.thumb.active {
     border-color: #d4af37;
 }
 
 .product-details {
     padding: 20px;
-    text-align: center;
-}
-
-.product-brand {
-    font-size: 0.75rem;
-    color: #666666;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.product-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-    color: #ffffff;
-}
-
-.product-price {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #d4af37;
-    margin-bottom: 15px;
 }
 
 .stock-badge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    color: #cccccc;
-    padding: 8px 12px;
-    border: 1px solid #222222;
-    background: #000000;
+    color: #ccc;
+    padding: 6px 10px;
+    border: 1px solid #222;
 }
 
 .stock-badge .stock-dot {
@@ -231,23 +250,9 @@ body {
     background-color: #2ecc71;
     border-radius: 50%;
     margin-right: 8px;
-    box-shadow: 0 0 8px rgba(46, 204, 113, 0.5);
 }
 
-.tag {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #d4af37;
-    color: #000000;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    padding: 4px 8px;
-    z-index: 2;
-}
-
-/* Drawers & Footer */
+/* Menus Laterais */
 .side-drawer, .cart-drawer {
     position: fixed;
     top: 0; bottom: 0;
@@ -258,9 +263,8 @@ body {
     transition: 0.4s ease;
 }
 
-.cart-drawer { right: 0; border-left: 1px solid #222222; transform: translateX(100%); }
-.side-drawer { left: 0; border-right: 1px solid #222222; transform: translateX(-100%); }
-
+.cart-drawer { right: 0; transform: translateX(100%); }
+.side-drawer { left: 0; transform: translateX(-100%); }
 .side-drawer.active, .cart-drawer.active { transform: translateX(0) !important; }
 
 .drawer-overlay {
@@ -279,5 +283,4 @@ body {
     text-align: center;
     color: #444444;
     font-size: 0.8rem;
-    letter-spacing: 2px;
 }
