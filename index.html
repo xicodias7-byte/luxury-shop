@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUXURY STORE | Exclusive Streetwear</title>
     
-    <!-- Meta Tags para Redes Sociais e WhatsApp -->
     <meta property="og:title" content="LUXURY STORE | Exclusive Streetwear">
     <meta property="og:description" content="Curadoria de vestuário urbano e peças exclusivas de luxo. Entrega direta ao domicílio em 7-14 dias.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1600&auto=format&fit=crop">
+    <meta property="og:image" content="lookbook-sweats.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/d4af37/crown.png">
-
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
@@ -78,9 +75,9 @@
     <!-- HOME PAGE -->
     <div id="secao-home" class="page-section active">
         
-        <!-- Hero Section com Foto de Capa Atualizada -->
+        <!-- Hero Section com a tua foto do lookbook -->
         <section class="main-hero">
-            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1600&auto=format&fit=crop" class="hero-background-img" alt="Luxury Store High-End Apparel">
+            <img src="lookbook-sweats.jpg" class="hero-background-img" alt="Luxury Store Apparel">
             <div class="hero-overlay-content">
                 <span class="hero-tag">LIMITED DROP &nbsp;•&nbsp; 1 UNIDADE POR PEÇA</span>
                 <h1>EXCLUSIVE MENSWEAR.</h1>
@@ -92,24 +89,24 @@
             </div>
         </section>
 
-        <!-- Lookbook Masculino (3 Categorias Mantidas) -->
+        <!-- Lookbook Masculino -->
         <section class="lookbook-grid">
             <div class="lookbook-card">
-                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop" alt="Casacos e Outerwear">
+                <img src="lookbook-casacos.jpg" alt="Casacos e Outerwear">
                 <div class="lookbook-caption">
                     <h3>OUTERWEAR & JACKETS</h3>
                     <button class="btn-line" onclick="filtrarCatalogo('casacos')">VER CASACOS</button>
                 </div>
             </div>
             <div class="lookbook-card">
-                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop" alt="Sweats e Hoodies">
+                <img src="lookbook-sweats.jpg" alt="Sweats e Hoodies">
                 <div class="lookbook-caption">
                     <h3>SWEATS & HOODIES</h3>
                     <button class="btn-line" onclick="filtrarCatalogo('sweats')">EXPLORAR SWEATS</button>
                 </div>
             </div>
             <div class="lookbook-card">
-                <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?q=80&w=800&auto=format&fit=crop" alt="Calças e Pants">
+                <img src="lookbook-calcas.jpg" alt="Calças e Pants">
                 <div class="lookbook-caption">
                     <h3>PANTS & TROUSERS</h3>
                     <button class="btn-line" onclick="filtrarCatalogo('calcas')">VER CALÇAS</button>
@@ -146,7 +143,7 @@
 
     </div>
 
-    <!-- CATÁLOGO PAGE (Sem produtos velhos) -->
+    <!-- CATÁLOGO PAGE (Sem produtos antigos) -->
     <div id="secao-catalogo" class="page-section">
         <section class="catalog-section">
             <div class="catalog-header">
@@ -163,7 +160,6 @@
                 </div>
             </div>
 
-            <!-- Grelha Limpa para Adicionares os Novos Produtos -->
             <div class="products-grid" id="product-grid">
                 <div class="no-products-msg">
                     <h3>NOVO DROP EM BREVE</h3>
@@ -231,11 +227,7 @@
             <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px;">Medidas aproximadas de corte regular / streetwear para a nossa coleção.</p>
             <table class="size-table">
                 <thead>
-                    <tr>
-                        <th>Tamanho</th>
-                        <th>Cintura / Peito</th>
-                        <th>Comprimento</th>
-                    </tr>
+                    <tr><th>Tamanho</th><th>Cintura / Peito</th><th>Comprimento</th></tr>
                 </thead>
                 <tbody>
                     <tr><td><strong>S</strong></td><td>38 - 54 cm</td><td>68 - 98 cm</td></tr>
@@ -248,7 +240,7 @@
         </div>
     </div>
 
-    <!-- Carrinho Lateral -->
+    <!-- Carrinho Lateral Oculto -->
     <aside id="cart-sidebar" class="cart-drawer">
         <div class="drawer-header">
             <h3>TEU CARRINHO</h3>
@@ -267,18 +259,16 @@
     </aside>
     <div id="cart-overlay" class="drawer-overlay" onclick="toggleCart()"></div>
 
-    <!-- Botão Flutuante do WhatsApp -->
+    <!-- WhatsApp Float -->
     <a href="https://wa.me/351916097477?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20peças%20da%20Luxury%20Store." target="_blank" class="whatsapp-float" title="Contactar no WhatsApp">
         <svg viewBox="0 0 32 32" class="whatsapp-icon">
             <path d="M16 2a14 14 0 0 0-12 21.2L2 30l7-1.8A14 14 0 1 0 16 2zm0 25.6a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.2-.3-.5A11.6 11.6 0 1 1 16 27.6zm6.3-8.6c-.3-.2-2-.9-2.3-1-.3-.2-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.8 8.8 0 0 1-1.7-2.1c-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.4.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1.8.3 1.5.5 2 .7.8.2 1.5.2 2.1.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.6-.5z" fill="#FFF"/>
         </svg>
     </a>
 
-    <!-- Rodapé -->
+    <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-bottom">
-            <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
-        </div>
+        <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
 
     <script src="script.js"></script>
