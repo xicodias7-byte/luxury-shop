@@ -52,6 +52,7 @@
         <nav class="drawer-nav">
             <a href="#" onclick="mostrarSecao('home'); toggleMenu();">Início</a>
             <a href="#" onclick="filtrarCatalogo('todos'); toggleMenu();">Ver Tudo</a>
+            <a href="#" onclick="filtrarCatalogo('tshirts'); toggleMenu();">T-Shirts</a>
             <a href="#" onclick="filtrarCatalogo('sweats'); toggleMenu();">Sweatshirts</a>
             <a href="#" onclick="filtrarCatalogo('casacos'); toggleMenu();">Casacos</a>
             <a href="#" onclick="filtrarCatalogo('calcas'); toggleMenu();">Calças</a>
@@ -137,6 +138,7 @@
                 <div class="catalog-toolbar">
                     <div class="filter-tabs">
                         <button class="filter-btn active" onclick="filtrarCategoriaInterna('todos', this)">TODOS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('tshirts', this)">T-SHIRTS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('sweats', this)">SWEATSHIRTS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('casacos', this)">CASACOS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('calcas', this)">CALÇAS</button>
@@ -323,6 +325,60 @@
                         </div>
 
                         <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Polo Ralph Lauren', 55)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </article>
+
+                <!-- T-Shirt Louis Vuitton Preta -->
+                <article class="product-item" data-categoria="tshirts" data-nome="tshirt t-shirt louis vuitton lv preta black" data-preco="42">
+                    <div class="product-media">
+                        <span class="tag">NEW</span>
+                        <img src="tshirt-preta-lv-1.jpg.jpg" id="img-tshirt-lv-preta" alt="T-Shirt Louis Vuitton Preta">
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="tshirt-preta-lv-1.jpg.jpg" class="thumb active" onclick="trocarFoto('img-tshirt-lv-preta', this.src, this)">
+                        <img src="tshirt-preta-lv-2.jpg.jpg" class="thumb" onclick="trocarFoto('img-tshirt-lv-preta', this.src, this)">
+                        <img src="tshirt-preta-lv-3.jpg.jpg" class="thumb" onclick="trocarFoto('img-tshirt-lv-preta', this.src, this)">
+                        <img src="tshirt-preta-lv-4.jpg.jpg" class="thumb" onclick="trocarFoto('img-tshirt-lv-preta', this.src, this)">
+                    </div>
+
+                    <div class="product-details">
+                        <span class="product-brand">LOUIS VUITTON</span>
+                        <h3 class="product-name">T-Shirt Louis Vuitton Preta</h3>
+                        <p class="product-price">42,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Preta', 42)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </article>
+
+                <!-- T-Shirt Louis Vuitton Branca -->
+                <article class="product-item" data-categoria="tshirts" data-nome="tshirt t-shirt louis vuitton lv branca white" data-preco="42">
+                    <div class="product-media">
+                        <span class="tag">NEW</span>
+                        <img src="tshirt-branca-lv-1.jpg.jpg" id="img-tshirt-lv-branca" alt="T-Shirt Louis Vuitton Branca">
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="tshirt-branca-lv-1.jpg.jpg" class="thumb active" onclick="trocarFoto('img-tshirt-lv-branca', this.src, this)">
+                        <img src="tshirt-branca-lv-2.jpg.jpg" class="thumb" onclick="trocarFoto('img-tshirt-lv-branca', this.src, this)">
+                        <img src="tshirt-branca-lv-3.jpg.jpg" class="thumb" onclick="trocarFoto('img-tshirt-lv-branca', this.src, this)">
+                        <img src="tshirt-branca-lv-4.jpg.jpg" class="thumb" onclick="trocarFoto('img-tshirt-lv-branca', this.src, this)">
+                    </div>
+
+                    <div class="product-details">
+                        <span class="product-brand">LOUIS VUITTON</span>
+                        <h3 class="product-name">T-Shirt Louis Vuitton Branca</h3>
+                        <p class="product-price">42,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca', 42)">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
             </div>
