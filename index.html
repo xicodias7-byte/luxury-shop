@@ -52,6 +52,7 @@
         <nav class="drawer-nav">
             <a href="#" onclick="mostrarSecao('home'); toggleMenu();">Início</a>
             <a href="#" onclick="filtrarCatalogo('todos'); toggleMenu();">Ver Tudo</a>
+            <a href="#" onclick="filtrarCatalogo('fatosdetreino'); toggleMenu();">Fatos de Treino</a>
             <a href="#" onclick="filtrarCatalogo('tshirts'); toggleMenu();">T-Shirts</a>
             <a href="#" onclick="filtrarCatalogo('sweats'); toggleMenu();">Sweatshirts</a>
             <a href="#" onclick="filtrarCatalogo('casacos'); toggleMenu();">Casacos</a>
@@ -138,6 +139,7 @@
                 <div class="catalog-toolbar">
                     <div class="filter-tabs">
                         <button class="filter-btn active" onclick="filtrarCategoriaInterna('todos', this)">TODOS</button>
+                        <button class="filter-btn" onclick="filtrarCategoriaInterna('fatosdetreino', this)">FATOS DE TREINO</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('tshirts', this)">T-SHIRTS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('sweats', this)">SWEATSHIRTS</button>
                         <button class="filter-btn" onclick="filtrarCategoriaInterna('casacos', this)">CASACOS</button>
@@ -379,6 +381,56 @@
                         </div>
 
                         <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca', 42)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </article>
+
+                <!-- Fato de Treino Supreme Cinzento -->
+                <article class="product-item" data-categoria="fatosdetreino" data-nome="fato de treino supreme cinzento grey tracksuit" data-preco="98">
+                    <div class="product-media">
+                        <span class="tag">NEW</span>
+                        <img src="suor-cinzenta-supreme-1.jpg.jpg" id="img-ft-supreme-cinzento" alt="Fato de Treino Supreme Cinzento">
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="suor-cinzenta-supreme-1.jpg.jpg" class="thumb active" onclick="trocarFoto('img-ft-supreme-cinzento', this.src, this)">
+                        <img src="calças-cinzenta-supreme-1.jpg.jpg" class="thumb" onclick="trocarFoto('img-ft-supreme-cinzento', this.src, this)">
+                    </div>
+
+                    <div class="product-details">
+                        <span class="product-brand">SUPREME</span>
+                        <h3 class="product-name">Fato de Treino Supreme Cinzento</h3>
+                        <p class="product-price">98,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Fato de Treino Supreme Cinzento', 98)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </article>
+
+                <!-- Fato de Treino Supreme Preto -->
+                <article class="product-item" data-categoria="fatosdetreino" data-nome="fato de treino supreme preto black tracksuit" data-preco="98">
+                    <div class="product-media">
+                        <span class="tag">NEW</span>
+                        <img src="sweat-preto-supreme-2.jpg.jpg" id="img-ft-supreme-preto" alt="Fato de Treino Supreme Preto">
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="sweat-preto-supreme-2.jpg.jpg" class="thumb active" onclick="trocarFoto('img-ft-supreme-preto', this.src, this)">
+                        <img src="calças-preta-supreme-2.jpg.jpg" class="thumb" onclick="trocarFoto('img-ft-supreme-preto', this.src, this)">
+                    </div>
+
+                    <div class="product-details">
+                        <span class="product-brand">SUPREME</span>
+                        <h3 class="product-name">Fato de Treino Supreme Preto</h3>
+                        <p class="product-price">98,00 €</p>
+                        
+                        <div class="stock-badge in-stock">
+                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        </div>
+
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Fato de Treino Supreme Preto', 98)">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
             </div>
