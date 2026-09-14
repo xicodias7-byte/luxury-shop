@@ -7,6 +7,8 @@
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/d4af37/crown.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK para envio gratuito automático de e-mails -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -337,7 +339,7 @@
                     </div>
                 </article>
 
-                <!-- T-Shirt Louis Vuitton Preta Modelo 1 -->
+                <!-- T-Shirt Louis Vuitton Preta -->
                 <article class="product-item" data-categoria="tshirts" data-nome="tshirt t-shirt louis vuitton lv preta black" data-preco="40">
                     <div class="product-media">
                         <span class="tag">NEW</span>
@@ -364,7 +366,7 @@
                     </div>
                 </article>
 
-                <!-- T-Shirt Louis Vuitton Branca Modelo 1 -->
+                <!-- T-Shirt Louis Vuitton Branca -->
                 <article class="product-item" data-categoria="tshirts" data-nome="tshirt t-shirt louis vuitton lv branca white" data-preco="40">
                     <div class="product-media">
                         <span class="tag">NEW</span>
@@ -390,8 +392,6 @@
                         <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca', 40)">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
-
-                <!-- NOVAS T-SHIRTS LV.1 (NOVOS MODELOS) -->
 
                 <!-- T-Shirt Louis Vuitton Preta LV.1 -->
                 <article class="product-item" data-categoria="tshirts" data-nome="tshirt t-shirt louis vuitton lv preta black lv1" data-preco="40">
@@ -543,7 +543,6 @@
                 </button>
                 <div class="accordion-body">
                     <p>E-mail: <strong>contacto.luxuryshop22@gmail.com</strong><br>
-                    WhatsApp: <strong>+351 916 097 477</strong><br>
                     Instagram: <strong>@Luxuryshopp2026</strong></p>
                 </div>
             </div>
@@ -571,6 +570,78 @@
         </div>
     </div>
 
+    <!-- MODAL DE CHECKOUT AUTOMÁTICO (DADOS DE ENVIO + MBWAY) -->
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-box checkout-box">
+            <span class="close-modal" onclick="fecharCheckout()">&times;</span>
+            <h2>FINALIZAR ENCOMENDA</h2>
+            <p class="checkout-subtitle">Preenche a tua morada e faz o pagamento via MB WAY para o envio da encomenda.</p>
+
+            <form id="checkout-form" onsubmit="processarEncomenda(event)">
+                <div class="form-group">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="cust-nome" required placeholder="Ex: João Silva">
+                </div>
+
+                <div class="form-group">
+                    <label>Endereço / Rua *</label>
+                    <input type="text" id="cust-rua" required placeholder="Ex: Rua Direita">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nº Porta / Andar *</label>
+                        <input type="text" id="cust-porta" required placeholder="Ex: Nº 45, 2º Dtº">
+                    </div>
+                    <div class="form-group">
+                        <label>Código Postal *</label>
+                        <input type="text" id="cust-cp" required placeholder="Ex: 1000-001">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cidade *</label>
+                        <input type="text" id="cust-cidade" required placeholder="Ex: Lisboa">
+                    </div>
+                    <div class="form-group">
+                        <label>Estado / Distrito *</label>
+                        <input type="text" id="cust-estado" required placeholder="Ex: Lisboa">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>País *</label>
+                        <input type="text" id="cust-pais" value="Portugal" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone de Contacto *</label>
+                        <input type="tel" id="cust-telefone" required placeholder="Ex: 912345678">
+                    </div>
+                </div>
+
+                <!-- BOX DE INSTRUÇÕES MBWAY -->
+                <div class="mbway-box">
+                    <div class="mbway-header">
+                        <span class="mbway-tag">PAGAMENTO</span>
+                        <h3>MB WAY DIRECTO</h3>
+                    </div>
+                    <p>Por favor faz o MB WAY do valor total da encomenda para:</p>
+                    <div class="mbway-number">916 097 477</div>
+                    <p class="mbway-note">A tua encomenda será enviada após a validação do MB WAY no prazo de 7 a 14 dias úteis.</p>
+                </div>
+
+                <div class="checkout-summary">
+                    <span>TOTAL A PAGAR:</span>
+                    <strong id="checkout-total-val">0,00 €</strong>
+                </div>
+
+                <button type="submit" class="btn-gold full-width" style="margin-top:15px;">CONFIRMAR E ENVIAR ENCOMENDA</button>
+            </form>
+        </div>
+    </div>
+
     <!-- CARRINHO -->
     <aside id="cart-sidebar" class="cart-drawer">
         <div class="drawer-header">
@@ -585,16 +656,10 @@
                 <span>TOTAL:</span>
                 <span id="cart-total-price">0,00 €</span>
             </div>
-            <button class="btn-gold full-width" onclick="finalizarWhatsApp()">FINALIZAR VIA WHATSAPP</button>
+            <button class="btn-gold full-width" onclick="abrirCheckout()">FINALIZAR ENCOMENDA</button>
         </div>
     </aside>
     <div id="cart-overlay" class="drawer-overlay" onclick="toggleCart()"></div>
-
-    <a href="https://wa.me/351916097477?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20peças%20da%20Luxury%20Store." target="_blank" class="whatsapp-float">
-        <svg viewBox="0 0 32 32" class="whatsapp-icon">
-            <path d="M16 2a14 14 0 0 0-12 21.2L2 30l7-1.8A14 14 0 1 0 16 2zm0 25.6a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.2-.3-.5A11.6 11.6 0 1 1 16 27.6zm6.3-8.6c-.3-.2-2-.9-2.3-1-.3-.2-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.8 8.8 0 0 1-1.7-2.1c-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.4.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1.8.3 1.5.5 2 .7.8.2 1.5.2 2.1.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.6-.5z" fill="#FFF"/>
-        </svg>
-    </a>
 
     <footer class="main-footer">
         <p>&copy; 2026 LUXURY STORE. TODOS OS DIREITOS RESERVADOS.</p>
