@@ -329,32 +329,50 @@ img {
 }
 
 /* ==========================================================================
-   LOOKBOOK GRID (PÁGINA INICIAL - DESIGN PREMIUM & DINÂMICO)
+   LOOKBOOK GRID (PÁGINA INICIAL - DESIGN DINÂMICO & VIBRANTE)
    ========================================================================== */
 .lookbook-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
     padding: 60px 5%;
     max-width: 1400px;
     margin: 0 auto;
-    background-color: #000000;
+    background: radial-gradient(circle at center, #141414 0%, #000000 100%);
 }
 
 .lookbook-card {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    border: 1px solid #262626;
-    background: #121212;
+    border: 1px solid #2a2a2a;
+    background: #111111;
     aspect-ratio: 3/4;
-    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.lookbook-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 3;
 }
 
 .lookbook-card:hover {
     transform: translateY(-8px);
     border-color: #d4af37;
-    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+}
+
+.lookbook-card:hover::before {
+    opacity: 1;
 }
 
 .lookbook-card img {
@@ -362,12 +380,12 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.95);
+    filter: brightness(0.9);
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
 }
 
 .lookbook-card:hover img {
-    transform: scale(1.08);
+    transform: scale(1.07);
     filter: brightness(1.1);
 }
 
@@ -376,41 +394,43 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 35px 20px 20px 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0.6) 65%, transparent 100%);
+    padding: 40px 20px 22px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    z-index: 2;
 }
 
 .lookbook-caption h3 {
     color: #ffffff;
     font-size: 1.15rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     margin: 0;
     text-transform: uppercase;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .lookbook-caption .btn-line {
     border: 1px solid #d4af37;
     color: #d4af37;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 9px 18px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 10px 20px;
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-    border-radius: 2px;
+    backdrop-filter: blur(5px);
+    border-radius: 3px;
 }
 
 .lookbook-card:hover .lookbook-caption .btn-line {
     background: #d4af37;
     color: #000000;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
 }
 /* ==========================================================================
    SECÇÃO AUTENTICIDADE & BANNER
