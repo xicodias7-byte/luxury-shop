@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/d4af37/crown.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <!-- EmailJS SDK para envio gratuito automático de e-mails -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
@@ -143,7 +142,7 @@
         <section class="catalog-section">
             <div class="catalog-header">
                 <h2 id="catalog-title">IN STOCK NOW</h2>
-                <p>Todas as peças são exclusivas &nbsp;•&nbsp; <strong>TODOS OS TAMANHOS DISPONÍVEIS</strong></p>
+                <p>Todas as peças são exclusivas &nbsp;•&nbsp; <strong>SELECIONA O TEU TAMANHO</strong></p>
                 
                 <div class="catalog-toolbar">
                     <div class="filter-tabs">
@@ -175,11 +174,17 @@
                         <h3 class="product-name">Casaco Carhartt Preto</h3>
                         <p class="product-price">63,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-carhartt-preto">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Preto', 63)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Preto', 63, 'size-carhartt-preto')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -200,11 +205,17 @@
                         <h3 class="product-name">Casaco Carhartt Cinzento</h3>
                         <p class="product-price">63,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-carhartt-cinzento">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Cinzento', 63)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Casaco Carhartt Cinzento', 63, 'size-carhartt-cinzento')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -225,11 +236,17 @@
                         <h3 class="product-name">Sweat Carhartt Preta</h3>
                         <p class="product-price">58,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-sweat-preta">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Carhartt Preta', 58)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Carhartt Preta', 58, 'size-sweat-preta')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -250,11 +267,17 @@
                         <h3 class="product-name">Sweat Carhartt Cinzenta</h3>
                         <p class="product-price">58,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-sweat-cinzenta">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Carhartt Cinzenta', 58)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Carhartt Cinzenta', 58, 'size-sweat-cinzenta')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -277,11 +300,17 @@
                         <h3 class="product-name">Sweat Balenciaga Preta</h3>
                         <p class="product-price">68,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-sweat-balenciaga-preta">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Balenciaga Preta', 68)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Balenciaga Preta', 68, 'size-sweat-balenciaga-preta')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -304,11 +333,17 @@
                         <h3 class="product-name">Sweat Balenciaga Branca</h3>
                         <p class="product-price">68,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-sweat-balenciaga-branca">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Balenciaga Branca', 68)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Balenciaga Branca', 68, 'size-sweat-balenciaga-branca')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -331,11 +366,17 @@
                         <h3 class="product-name">Sweat Polo Ralph Lauren</h3>
                         <p class="product-price">55,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-sweat-polo">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Polo Ralph Lauren', 55)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Sweat Polo Ralph Lauren', 55, 'size-sweat-polo')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -358,11 +399,17 @@
                         <h3 class="product-name">T-Shirt Louis Vuitton Preta</h3>
                         <p class="product-price">40,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-tshirt-lv-preta">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Preta', 40)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Preta', 40, 'size-tshirt-lv-preta')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -385,11 +432,17 @@
                         <h3 class="product-name">T-Shirt Louis Vuitton Branca</h3>
                         <p class="product-price">40,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-tshirt-lv-branca">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca', 40)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca', 40, 'size-tshirt-lv-branca')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -412,11 +465,17 @@
                         <h3 class="product-name">T-Shirt Louis Vuitton Preta LV.1</h3>
                         <p class="product-price">40,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-tshirt-lv-preta-v1">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Preta LV.1', 40)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Preta LV.1', 40, 'size-tshirt-lv-preta-v1')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -439,11 +498,17 @@
                         <h3 class="product-name">T-Shirt Louis Vuitton Branca LV.1</h3>
                         <p class="product-price">40,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-tshirt-lv-branca-v1">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca LV.1', 40)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('T-Shirt Louis Vuitton Branca LV.1', 40, 'size-tshirt-lv-branca-v1')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -464,11 +529,17 @@
                         <h3 class="product-name">Fato de Treino Supreme Cinzento</h3>
                         <p class="product-price">98,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-ft-supreme-cinzento">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Fato de Treino Supreme Cinzento', 98)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Fato de Treino Supreme Cinzento', 98, 'size-ft-supreme-cinzento')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
 
@@ -489,11 +560,17 @@
                         <h3 class="product-name">Fato de Treino Supreme Preto</h3>
                         <p class="product-price">98,00 €</p>
                         
-                        <div class="stock-badge in-stock">
-                            <span class="stock-dot"></span> STOCK ILIMITADO • TAMANHOS: S, M, L, XL
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-ft-supreme-preto">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
                         </div>
 
-                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Fato de Treino Supreme Preto', 98)">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Fato de Treino Supreme Preto', 98, 'size-ft-supreme-preto')">ADICIONAR AO CARRINHO</button>
                     </div>
                 </article>
             </div>
