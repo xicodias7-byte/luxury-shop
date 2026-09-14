@@ -1,7 +1,12 @@
 let carrinho = [];
 
-function adicionarAoCarrinho(nome, preco) {
-    carrinho.push({ nome, preco });
+function adicionarAoCarrinho(nome, preco, selectId) {
+    let tamanho = 'M';
+    if (selectId && document.getElementById(selectId)) {
+        tamanho = document.getElementById(selectId).value;
+    }
+
+    carrinho.push({ nome, preco, tamanho });
     atualizarCarrinho();
     toggleCart();
 }
@@ -33,9 +38,10 @@ function atualizarCarrinho() {
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #222; padding-bottom:8px;">
                 <div>
                     <strong style="font-size:0.85rem; display:block;">${item.nome}</strong>
+                    <span style="font-size:0.75rem; color:#aaa; display:block;">Tamanho: <strong>${item.tamanho}</strong></span>
                     <span style="color:#d4af37; font-size:0.8rem;">${item.preco.toFixed(2)} €</span>
                 </div>
-                <button onclick="removerDoCarrinho(${index})" style="background:none; border:none; color:#ff4d4d; cursor:pointer;">&times;</button>
+                <button onclick="removerDoCarrinho(${index})" style="background:none; border:none; color:#ff4d4d; font-size:1.2rem; cursor:pointer;">&times;</button>
             </div>
         `;
     });
@@ -95,11 +101,11 @@ function processarEncomenda(event) {
         estado: document.getElementById('cust-estado').value,
         pais: document.getElementById('cust-pais').value,
         telefone: document.getElementById('cust-telefone').value,
-        itens: carrinho.map(i => i.nome).join(', '),
+        itens: carrinho.map(i => `${i.nome} (${i.tamanho})`).join(', '),
         total: document.getElementById('checkout-total-val').innerText
     };
 
-    alert(`Obrigado ${dados.nome}!\n\nA tua encomenda foi registada com sucesso.\nPor favor faz o MB WAY de ${dados.total} para o número 916 097 477 para procedermos ao envio.`);
+    alert(`Obrigado ${dados.nome}!\n\nA tua encomenda foi registada com sucesso.\nItens: ${dados.itens}\n\nPor favor faz o MB WAY de ${dados.total} para o número 916 097 477 para procedermos ao envio.`);
 
     carrinho = [];
     atualizarCarrinho();
