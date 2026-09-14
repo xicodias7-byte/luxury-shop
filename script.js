@@ -142,4 +142,36 @@ function filtrarCategoriaInterna(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     filtrarCatalogo(cat);
+    // Função para abrir a imagem ampliada (Lightbox)
+function abrirImagemAmpliada(imgSrc) {
+    let modal = document.getElementById('image-zoom-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'image-zoom-modal';
+        modal.className = 'zoom-modal-overlay';
+        modal.innerHTML = `
+            <div class="zoom-modal-content">
+                <span class="zoom-close" onclick="fecharImagemAmpliada()">&times;</span>
+                <img id="img-zoomed-target" src="" alt="Imagem Ampliada">
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                fecharImagemAmpliada();
+            }
+        });
+    }
+    
+    document.getElementById('img-zoomed-target').src = imgSrc;
+    modal.style.display = 'flex';
+}
+
+function fecharImagemAmpliada() {
+    const modal = document.getElementById('image-zoom-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
 }
