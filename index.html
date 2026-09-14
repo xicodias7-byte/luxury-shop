@@ -454,6 +454,39 @@
                     </div>
                 </article>
 
+                <!-- Calças Essentials (Pretas e Cinzentas) -->
+                <article class="product-item" data-categoria="calcas" data-nome="calcas calça essentials 1" data-preco="50">
+                    <div class="product-media">
+                        <span class="tag">NEW</span>
+                        <img src="CALÇAS ESS1.jpeg" id="img-calcas-essentials" alt="Calças Essentials" onclick="abrirImagemAmpliada(this.src)">
+                    </div>
+                    
+                    <div class="product-thumbnails">
+                        <img src="CALÇAS ESS1.jpeg" class="thumb active" onclick="trocarFoto('img-calcas-essentials', this.src, this)">
+                        <img src="CALÇAS ESS2.jpeg" class="thumb" onclick="trocarFoto('img-calcas-essentials', this.src, this)">
+                        <img src="CALÇAS ESS3.jpeg" class="thumb" onclick="trocarFoto('img-calcas-essentials', this.src, this)">
+                        <img src="CALÇAS ESS4.jpeg" class="thumb" onclick="trocarFoto('img-calcas-essentials', this.src, this)">
+                    </div>
+
+                    <div class="product-details">
+                        <span class="product-brand">ESSENTIALS</span>
+                        <h3 class="product-name">Calças Essentials</h3>
+                        <p class="product-price">50,00 €</p>
+                        
+                        <div class="size-selector-wrapper">
+                            <label>Tamanho:</label>
+                            <select class="size-select" id="size-calcas-essentials">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho('Calças Essentials', 50, 'size-calcas-essentials')">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </article>
+
                 <!-- T-Shirt Louis Vuitton Preta -->
                 <article class="product-item" data-categoria="tshirts" data-nome="tshirt t-shirt louis vuitton lv preta black" data-preco="40">
                     <div class="product-media">
