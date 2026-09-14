@@ -1,69 +1,179 @@
+// CONTROLO DO MENU LATERAL
+function toggleMenu() {
+    const menu = document.getElementById('side-menu');
+    const overlay = document.getElementById('menu-overlay');
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+// CONTROLO DA BARRA DE PESQUISA
+function toggleSearch() {
+    const searchBar = document.getElementById('search-bar');
+    if (searchBar.style.display === 'block') {
+        searchBar.style.display = 'none';
+    } else {
+        searchBar.style.display = 'block';
+    }
+}
+
+// CONTROLO DO CARRINHO
+function toggleCart() {
+    const cart = document.getElementById('cart-sidebar');
+    const overlay = document.getElementById('cart-overlay');
+    cart.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+// NAVEGAÇÃO ENTRE PÁGINAS (HOME / CATÁLOGO / SOBRE)
+function mostrarSecao(secaoId) {
+    document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.remove('active');
+    });
+    
+    if (secaoId === 'home') {
+        document.getElementById('secao-home').classList.add('active');
+    } else if (secaoId === 'sobre') {
+        document.getElementById('secao-sobre').classList.add('active');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// FILTRAR CATÁLOGO A PARTIR DO LOOKBOOK
+function filtrarCatalogo(categoria) {
+    document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById('secao-catalogo').classList.add('active');
+    
+    const botoes = document.querySelectorAll('.filter-btn');
+    botoes.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(categoria) || (categoria === 'todos' && btn.textContent === 'TODOS')) {
+            btn.classList.add('active');
+        }
+    });
+
+    const produtos = document.querySelectorAll('.product-item');
+    produtos.forEach(prod => {
+        if (categoria === 'todos' || prod.getAttribute('data-categoria') === categoria) {
+            prod.style.display = 'flex';
+        } else {
+            prod.style.display = 'none';
+        }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// FILTRAR CATEGORIA INTERNA NO CATÁLOGO
+function filtrarCategoriaInterna(categoria, btnElement) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    const produtos = document.querySelectorAll('.product-item');
+    produtos.forEach(prod => {
+        if (categoria === 'todos' || prod.getAttribute('data-categoria') === categoria) {
+            prod.style.display = 'flex';
+        } else {
+            prod.style.display = 'none';
+        }
+    });
+}
+
+// PESQUISA DE PRODUTOS EM TEMPO REAL
+function pesquisarProdutos(termo) {
+    const filtro = termo.toLowerCase().trim();
+    document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById('secao-catalogo').classList.add('active');
+
+    const produtos = document.querySelectorAll('.product-item');
+    produtos.forEach(prod => {
+        const nomeProduto = prod.getAttribute('data-nome') || '';
+        if (nomeProduto.includes(filtro)) {
+            prod.style.display = 'flex';
+        } else {
+            prod.style.display = 'none';
+        }
+    });
+}
+
+// TROCAR FOTO PRINCIPAL AO CLICAR NAS MINIATURAS
+function trocarFoto(imgId, novaSrc, thumbElement) {
+    const imgPrincipal = document.getElementById(imgId);
+    if (imgPrincipal) {
+        imgPrincipal.src = novaSrc;
+    }
+    
+    const containerThumbnails = thumbElement.parentElement;
+    containerThumbnails.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumbElement.classList.add('active');
+}
+
+// GESTÃO DO CARRINHO DE COMPRAS
 let carrinho = [];
 
-function adicionarAoCarrinho(nome, preco, selectId) {
-    let tamanho = 'M';
-    if (selectId && document.getElementById(selectId)) {
-        tamanho = document.getElementById(selectId).value;
+function adicionarAoCarrinho(nomeProduto, preco, selectId) {
+    const selectTamanho = document.getElementById(selectId);
+    const tamanho = selectTamanho ? selectTamanho.value : 'M';
+    
+    const itemExistente = carrinho.find(item => item.nome === nomeProduto && item.tamanho === tamanho);
+    
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        carrinho.push({
+            nome: nomeProduto,
+            preco: preco,
+            tamanho: tamanho,
+            quantidade: 1
+        });
     }
-
-    carrinho.push({ nome, preco, tamanho });
-    atualizarCarrinho();
+    
+    atualizarCarrinhoUI();
     toggleCart();
 }
 
 function removerDoCarrinho(index) {
     carrinho.splice(index, 1);
-    atualizarCarrinho();
+    atualizarCarrinhoUI();
 }
 
-function atualizarCarrinho() {
-    const cartItems = document.getElementById('cart-items');
+function atualizarCarrinhoUI() {
+    const cartItemsContainer = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
-    const cartTotal = document.getElementById('cart-total-price');
-
-    cartCount.innerText = carrinho.length;
-
+    const cartTotalPrice = document.getElementById('cart-total-price');
+    
+    let totalItens = 0;
+    let precoTotal = 0;
+    
     if (carrinho.length === 0) {
-        cartItems.innerHTML = '<p class="empty-msg">O teu carrinho está vazio.</p>';
-        cartTotal.innerText = '0,00 €';
-        return;
-    }
-
-    let html = '';
-    let total = 0;
-
-    carrinho.forEach((item, index) => {
-        total += item.preco;
-        html += `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #222; padding-bottom:8px;">
-                <div>
-                    <strong style="font-size:0.85rem; display:block;">${item.nome}</strong>
-                    <span style="font-size:0.75rem; color:#aaa; display:block;">Tamanho: <strong>${item.tamanho}</strong></span>
-                    <span style="color:#d4af37; font-size:0.8rem;">${item.preco.toFixed(2)} €</span>
+        cartItemsContainer.innerHTML = '<p class="empty-msg">O teu carrinho está vazio.</p>';
+    } else {
+        cartItemsContainer.innerHTML = '';
+        carrinho.forEach((item, index) => {
+            totalItens += item.quantidade;
+            precoTotal += item.preco * item.quantidade;
+            
+            cartItemsContainer.innerHTML += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.nome}</h4>
+                        <p>Tam: <strong>${item.tamanho}</strong> | Qtd: ${item.quantidade}</p>
+                    </div>
+                    <div class="cart-item-right">
+                        <span class="cart-item-price">${(item.preco * item.quantidade).toFixed(2)} €</span>
+                        <button class="remove-btn" onclick="removerDoCarrinho(${index})">Remover</button>
+                    </div>
                 </div>
-                <button onclick="removerDoCarrinho(${index})" style="background:none; border:none; color:#ff4d4d; font-size:1.2rem; cursor:pointer;">&times;</button>
-            </div>
-        `;
-    });
-
-    cartItems.innerHTML = html;
-    cartTotal.innerText = total.toFixed(2) + ' €';
+            `;
+        });
+    }
+    
+    cartCount.textContent = totalItens;
+    cartTotalPrice.textContent = precoTotal.toFixed(2) + ' €';
 }
 
-function toggleCart() {
-    document.getElementById('cart-sidebar').classList.toggle('active');
-    document.getElementById('cart-overlay').classList.toggle('active');
-}
-
-function toggleMenu() {
-    document.getElementById('side-menu').classList.toggle('active');
-    document.getElementById('menu-overlay').classList.toggle('active');
-}
-
-function toggleSearch() {
-    document.getElementById('search-bar').classList.toggle('active');
-}
-
+// GUIA DE TAMANHOS MODAL
 function abrirGuiaTamanhos() {
     document.getElementById('size-guide-modal').classList.add('active');
 }
@@ -72,15 +182,16 @@ function fecharGuiaTamanhos() {
     document.getElementById('size-guide-modal').classList.remove('active');
 }
 
+// CHECKOUT E FINALIZAÇÃO DE ENCOMENDA
 function abrirCheckout() {
     if (carrinho.length === 0) {
-        alert('Adiciona pelo menos um item ao carrinho.');
+        alert('O teu carrinho está vazio!');
         return;
     }
-
-    let total = carrinho.reduce((sum, item) => sum + item.preco, 0);
-    document.getElementById('checkout-total-val').innerText = total.toFixed(2) + ' €';
-
+    
+    let precoTotal = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
+    document.getElementById('checkout-total-val').textContent = precoTotal.toFixed(2) + ' €';
+    
     toggleCart();
     document.getElementById('checkout-modal').classList.add('active');
 }
@@ -91,58 +202,43 @@ function fecharCheckout() {
 
 function processarEncomenda(event) {
     event.preventDefault();
-
-    const dados = {
-        nome: document.getElementById('cust-nome').value,
-        rua: document.getElementById('cust-rua').value,
-        porta: document.getElementById('cust-porta').value,
-        cp: document.getElementById('cust-cp').value,
-        cidade: document.getElementById('cust-cidade').value,
-        estado: document.getElementById('cust-estado').value,
-        pais: document.getElementById('cust-pais').value,
-        telefone: document.getElementById('cust-telefone').value,
-        itens: carrinho.map(i => `${i.nome} (${i.tamanho})`).join(', '),
-        total: document.getElementById('checkout-total-val').innerText
-    };
-
-    alert(`Obrigado ${dados.nome}!\n\nA tua encomenda foi registada com sucesso.\nItens: ${dados.itens}\n\nPor favor faz o MB WAY de ${dados.total} para o número 916 097 477 para procedermos ao envio.`);
-
+    
+    const nome = document.getElementById('cust-nome').value;
+    const rua = document.getElementById('cust-rua').value;
+    const porta = document.getElementById('cust-porta').value;
+    const cp = document.getElementById('cust-cp').value;
+    const cidade = document.getElementById('cust-cidade').value;
+    const estado = document.getElementById('cust-estado').value;
+    const pais = document.getElementById('cust-pais').value;
+    const telefone = document.getElementById('cust-telefone').value;
+    
+    let resumoItens = carrinho.map(item => `• ${item.quantidade}x ${item.nome} (Tamanho: ${item.tamanho}) - ${(item.preco * item.quantidade)}€`).join('\n');
+    let totalGeral = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
+    
+    const mensagem = `Nova Encomenda - LUXURY STORE:\n\nCliente: ${nome}\nTelemóvel: ${telefone}\nMorada: ${rua}, ${porta}, ${cp} ${cidade}, ${estado}, ${pais}\n\nItens:\n${resumoItens}\n\nTotal: ${totalGeral.toFixed(2)}€`;
+    
+    alert('Encomenda registada com sucesso! Obrigado pela preferência.');
     carrinho = [];
-    atualizarCarrinho();
+    atualizarCarrinhoUI();
     fecharCheckout();
+    document.getElementById('checkout-form').reset();
 }
 
-function trocarFoto(imgId, newSrc, thumbElement) {
-    document.getElementById(imgId).src = newSrc;
-    let thumbnails = thumbElement.parentElement.getElementsByClassName('thumb');
-    for (let t of thumbnails) {
-        t.classList.remove('active');
+// ACCORDION DO SUPORTE
+function toggleAccordion(btn) {
+    const body = btn.nextElementSibling;
+    const sign = btn.querySelector('.sign');
+    
+    if (body.style.display === 'block') {
+        body.style.display = 'none';
+        sign.textContent = '+';
+    } else {
+        body.style.display = 'block';
+        sign.textContent = '-';
     }
-    thumbElement.classList.add('active');
 }
 
-function mostrarSecao(secao) {
-    document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-    document.getElementById('secao-' + secao).classList.add('active');
-}
-
-function filtrarCatalogo(cat) {
-    mostrarSecao('catalogo');
-    let items = document.querySelectorAll('.product-item');
-    items.forEach(item => {
-        if (cat === 'todos' || item.dataset.categoria === cat) {
-            item.style.display = 'flex';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
-
-function filtrarCategoriaInterna(cat, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    filtrarCatalogo(cat);
-    // Função para abrir a imagem ampliada (Lightbox)
+// FUNÇÕES DE ZOOM DE IMAGEM (LIGHTBOX)
 function abrirImagemAmpliada(imgSrc) {
     let modal = document.getElementById('image-zoom-modal');
     if (!modal) {
@@ -173,5 +269,4 @@ function fecharImagemAmpliada() {
     if (modal) {
         modal.style.display = 'none';
     }
-}
 }
